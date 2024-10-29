@@ -1,24 +1,21 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 
 function Portfolio() {
-
     const [color, setColor] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <>
-            <div className={`${color ? 'bg-black' : 'bg-white'} py-4 px-4 `}>
-                <div className={`mx-auto max-w-7xl flex justify-center ${color ? 'bg-[#1c1e1e]' : 'bg-white'} shadow-lg rounded-md`}>
-
+            <div className={`${color ? 'bg-black' : 'bg-white'} py-4 px-4`}>
+                <div className={`mx-auto max-w-7xl flex flex-col justify-center ${color ? 'bg-[#1c1e1e]' : 'bg-white'} shadow-lg rounded-md`}>
                     {/* desktop menu */}
                     <nav className='py-4 tracking-wider flex justify-between items-center w-full px-6 h-14 md:h-24'>
                         <a href='' className={`${color ? 'text-white' : 'text-black'} text-sm font-semibold`}>heyyy</a>
-                        <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold bg-white shadow-lg py-2 px-2 rounded-md ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
-                            <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Home</li>
+                        <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold  shadow-lg py-2 px-2 rounded-md ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
+                            <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-white text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Home</li>
                             <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Experience</li>
                             <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Projects</li>
                             <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>About</li>
@@ -27,9 +24,9 @@ function Portfolio() {
                         {/* mobile menu */}
                         <div className='md:hidden flex items-center'>
                             {menuOpen ? (
-                                <IoClose 
-                                    onClick={() => setMenuOpen(false)} 
-                                    className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`} 
+                                <IoClose
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`}
                                 />
                             ) : (
                                 <BiMenuAltRight
@@ -46,7 +43,6 @@ function Portfolio() {
                                 <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>About</li>
                             </ul>
                         )}
-
                         {/* Toggle Switch */}
                         <div className="hidden md:flex items-center">
                             <label className="relative inline-flex items-center cursor-pointer">
@@ -65,10 +61,62 @@ function Portfolio() {
                             </label>
                         </div>
                     </nav>
+                    <hr className='border-[1px] mx-6 border-gray-600 rounded-md' />
+
+                    {/* Main */}
+                    <div className={`grid grid-cols-2 justify-center items-center tracking-wide ${color ? 'text-white' : 'text-black'}`}>
+                        <div className='text-base font-semibold py-24 px-24 '>
+                            <h1 className='text-xl font-bold py-1'>Myself,</h1>
+                            <h1 className='text-4xl font-bold py-1'>Shreyash Thaware.</h1>
+                            <p className='py-1'>I am an motivated and resourceful individual dedicated to harnessing my skills in technology to develop projects that leave a lasting impact. I'm eager to collaborate and explore new horizons in the tech space!
+
+                            </p>
+                        </div>
+                        <div className='flex items-center justify-center'>
+                            <img src="/hero.png" alt="" className='' />
+                        </div>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className={`py-16 ${color ? 'text-white' : 'text-black'}`}>
+                        <div className='flex justify-center items-center gap-2'>
+                            <div className='line-before h-[1.5px] w-full bg-slate-300 mx-4'></div>
+                            <h1 className='text-nowrap text-2xl font-bold uppercase'>Tech stack</h1>
+                            <div className='line-after h-[1.5px] w-full bg-slate-300 mx-4'></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {/* Mobile Toggle Switch at the Bottom */}
+                <div className='md:hidden fixed bottom-20  right-10 flex justify-center py-2'>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                            type="checkbox"
+                            className="sr-only peer"
+                            checked={color}
+                            onChange={() => setColor(!color)}
+                        />
+                        <div className={` w-8 h-8 bg-gray-200 rounded-full peer-focus:outline-none shadow-lg peer-checked:bg-black transition-all flex items-center justify-center px-1 border-2 ${color ? 'border-gray-700' : ''}`}>
+                            {/* Sun and Moon Icons */}
+                            <div className='md:hidden flex items-center'>
+                                {color ? (
+                                    <FaMoon
+                                        className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`}
+                                    />
+                                ) : (
+                                    <FaSun
+                                        className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-yellow-600'}`}
+                                    />
+                                )}
+                            </div>
+
+                        </div>
+                    </label>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default Portfolio
+export default Portfolio;
