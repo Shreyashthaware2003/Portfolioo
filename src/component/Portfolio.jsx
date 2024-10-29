@@ -17,10 +17,10 @@ function Portfolio() {
                         <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#1c1e1e]' : 'bg-white shadow-lg'}`}>
                             <a href='' className={`${color ? 'text-white' : 'text-black'} text-sm font-semibold`}>heyyy</a>
                             <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-white text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Home</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Experience</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Projects</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>About</li>
+                                <li className={`px-4 py-2  ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md  cursor-pointer`}>Home</li>
+                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>Experience</li>
+                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md  cursor-pointer`}>Projects</li>
+                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md  cursor-pointer`}>About</li>
                             </ul>
 
                             {/* Mobile menu */}
@@ -39,10 +39,10 @@ function Portfolio() {
                             </div>
                             {menuOpen && (
                                 <ul className={`absolute top-20 right-4 shadow-lg rounded-md text-sm font-semibold py-4 px-6 flex flex-col gap-2 ${color ? 'bg-[#1c1e1e] text-white' : 'text-black bg-white'} z-50`}>
-                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Home</li>
-                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Experience</li>
-                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>Projects</li>
-                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md hover:text-white cursor-pointer`}>About</li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md cursor-pointer`}>Home</li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md cursor-pointer`}>Experience</li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md cursor-pointer`}>Projects</li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600'} rounded-md cursor-pointer`}>About</li>
                                 </ul>
                             )}
                             {/* Toggle Switch */}
