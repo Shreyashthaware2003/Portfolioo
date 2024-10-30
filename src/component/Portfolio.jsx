@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
@@ -9,6 +11,7 @@ import { FaInstagram } from "react-icons/fa";
 import { MdMailOutline } from "react-icons/md";
 import { IoMailUnread } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa6";
+import { GiClick } from "react-icons/gi";
 
 function Portfolio() {
     const [color, setColor] = useState(false);
@@ -23,7 +26,7 @@ function Portfolio() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['home', 'experience', 'projects', 'about'];
+            const sections = ['home', 'projects', 'about', 'contact'];
             for (const section of sections) {
                 const element = document.getElementById(section);
                 if (element && window.scrollY >= element.offsetTop - 160) {
@@ -118,6 +121,39 @@ function Portfolio() {
         setSelectedImage(null); // Clear the selected image
     };
 
+    // Form
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        formData.append("access_key", "42e4dcd2-d506-402f-aaf5-c70cda16083b");
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: json
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                toast.success("Form submitted! Thanks for reaching out.");
+                event.target.reset(); // Clears the form inputs
+            } else {
+                toast.error("Failed to submit form. Please try again.");
+            }
+        } catch (error) {
+            toast.error("An error occurred. Please try again.");
+            console.error("Submission error:", error);
+        }
+    };
+
+
     return (
         <>
             <div className={`${color ? 'bg-black' : 'bg-white'} py-4 px-4`}>
@@ -134,12 +170,6 @@ function Portfolio() {
                                     </li>
                                 </a>
 
-                                <a href="#experience">
-                                    <li className={`px-4 py-2 ${activeSection === 'experience' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
-                                        Experience
-                                    </li>
-                                </a>
-
                                 <a href="#projects">
                                     <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
                                         Projects
@@ -152,6 +182,12 @@ function Portfolio() {
                                     </li>
                                 </a>
 
+
+                                <a href="#contact">
+                                    <li className={`px-4 py-2 ${activeSection === 'contact' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
+                                        Contact
+                                    </li>
+                                </a>
                             </ul>
                             {/* Mobile menu toggle */}
                             <div className='md:hidden flex items-center'>
@@ -173,13 +209,13 @@ function Portfolio() {
                                         <a href="#home">Home</a>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <a href="#experience">Experience</a>
-                                    </li>
-                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
                                         <a href="#projects">Projects</a>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
                                         <a href="#about">About</a>
+                                    </li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
+                                        <a href="#contact">Contact</a>
                                     </li>
                                 </ul>
                             )}
@@ -204,7 +240,7 @@ function Portfolio() {
                     </nav>
 
                     {/* Main Content */}
-                    <div className={`py-24 flex flex-col  items-center ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
+                    <div className={`pb-2 pt-24 flex flex-col  items-center ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                         {/* <h1 className={`${color ? 'text-white' : 'text-black'} text-4xl font-bold text-center`}>My Portfolio</h1> */}
                         <div id='home' className={`grid md:grid-cols-2 md:w-[900px]  md:gap-0 justify-center items-center tracking-wide py-4 md:py-20 ${color ? 'text-white' : 'text-black'}`}>
                             <div className=' text-sm md:text-base font-semibold px-6 md:py-24 md:px-24 order-2 md:order-1 flex flex-col md:text-start md:w-[600px]'>
@@ -228,13 +264,13 @@ function Portfolio() {
                         </div>
 
                         {/* Projects Section with Pagination */}
-                        <div id='projects' className='py-16'>
-                            <div className='flex justify-center items-center gap-6 py-8  md:px-10'>
+                        <div id='projects' className='md:pt-16'>
+                            <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
                                 <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
                             </div>
-                            <div className='flex flex-wrap justify-center gap-4 py-4'>
+                            <div className='flex flex-wrap justify-center gap-4 py-8'>
                                 {currentProjects.map((item, index) => (
                                     <a href={item.project} target='_blank' key={index} className={`flex flex-col  mx-2 md:mx-0 border-2 border-black rounded-md ${color ? 'text-white border-gray-400' : 'text-black'}`}>
                                         <img src={item.imgSrc} alt={item.imgAlt} className='w-96 md:h-[185px] object-cover rounded-t-md' />
@@ -253,7 +289,7 @@ function Portfolio() {
                                     <div
                                         key={index}
                                         className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage
-                                            ? color ? 'bg-green-500' : 'bg-blue-500' : 'bg-gray-300'
+                                            ? color ? 'bg-green-500 border-2 shadow-white' : 'bg-blue-500 border-2 border-black ' : 'bg-gray-300'
                                             }`}
                                         onClick={() => setCurrentPage(index + 1)}
                                     ></div>
@@ -263,13 +299,13 @@ function Portfolio() {
 
 
                         {/* About Section */}
-                        <div id='about' className='py-16 w-full'>
-                            <div className='flex justify-center items-center gap-6 py-8 md:px-20'>
+                        <div id='about' className='pt-16 w-full'>
+                            <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
-                                <h2 className={`text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>About Me</h2>
+                                <h2 className={`text-xl md:text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>About Me</h2>
                                 <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
                             </div>
-                            <div className='flex flex-col md:flex-row justify-center gap-20 px-4 md:px-32 py-16'>
+                            <div className='flex flex-col md:flex-row justify-center gap-20 px-4 md:px-32 py-6 md:py-16'>
                                 <div className='md:w-[500px]'>
                                     <p className={`font-semibold ${color ? 'text-white' : ''}`}>
                                         Hi, I'm <span className={`text-lg tracking-wider ${color ? 'text-green-500' : 'text-blue-600'}`}>Shreyash Thaware,</span> a passionate web developer committed to transforming ideas into interactive, user-focused digital experiences.With a background in modern web development technologies, I specialize in creating clean, responsive, and efficient websites and applications that not only function seamlessly but also offer intuitive user experiences.
@@ -291,7 +327,7 @@ function Portfolio() {
                                             <span className='rounded-full w-3 h-3 bg-yellow-500'></span>
                                             <span className='rounded-full w-3 h-3 bg-green-500'></span>
                                             <div className='text-white text-xs font-semibold tracking-wider flex w-[200px]  justify-end'>
-                                                <span>Click to preview</span>
+                                                <span className='flex items-center justify-center gap-2'>Click to preview <GiClick className='transform rotate-[35deg]' /></span>
                                             </div>
                                         </div>
                                         <div className=' relative'>
@@ -302,14 +338,40 @@ function Portfolio() {
                                                 onClick={handleImageClick} // Add onClick event to open modal
                                             />
                                             <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0 absolute bottom-5 left-14 md:left-[75px]'>
-                                                <button className={` font-bold text-xs w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
-                                                    Download Resume
+                                                <button className={` font-bold tracking-wide text-xs w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
+                                                    Download
                                                 </button>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* Contact Section */}
+                        <div id='contact' className='pt-16 w-full px-4'>
+                            <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
+                                <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
+                                <h2 className={`text-xl md:text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>Contact Me</h2>
+                                <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
+                            </div>
+                            <form onSubmit={onSubmit} className=' flex justify-center items-center py-10 md:py-20 '>
+                                <div className='flex flex-col md:flex-row justify-between  border shadow-lg md:w-[800px] py-6 md:py-10 px-8 rounded-md'>
+                                    <div className='md:w-[300px]'>
+                                        <h1 className={` ${color ? 'text-white' : 'text-black'} capitalize text-black text-2xl font-bold`}>let's get in touch</h1>
+                                        <div className='flex justify-center'>
+                                            <img src="/contact.svg" alt="" className='w-48 md:w-96 pt-8 md:py-6' />
+                                        </div>
+                                    </div>
+                                    <div className='md:w-[380px] pt-10 md:pt-20 space-y-8'>
+                                        <input type="text" placeholder='Full Name' className={`text-black border-b py-1 px-1 border-blue-600 w-full ${color ? 'bg-[#111212fa] text-white border-green-400' : ''}`} />
+                                        <input type="email" placeholder='Email' className={`text-black border-b py-1 px-1 border-blue-600 w-full ${color ? 'bg-[#111212fa] text-white border-green-400' : ''}`} />
+                                        <textarea placeholder='Type your Message...' name="message" id="" rows={1} className={`text-black border-b py-1 px-1 border-blue-600 w-full ${color ? 'bg-[#111212fa] text-white border-green-400' : ''}`}></textarea>
+                                        <button type='submit' className={`py-2 px-4 rounded-md shadow-lg hover:scale-105 duration-200 font-semibold ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'}`}>Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false}  />
                         </div>
 
                         {/* Modal for Resume Image */}
@@ -323,7 +385,6 @@ function Portfolio() {
                                     >
                                         <IoClose />
                                     </button>
-
                                 </div>
                             </a>
                         )}
