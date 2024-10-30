@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
@@ -6,12 +6,35 @@ import { FiGithub } from "react-icons/fi";
 import { IoLink } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { MdMailOutline } from "react-icons/md";
+import { IoMailUnread } from "react-icons/io5";
+import { FaLinkedin } from "react-icons/fa6";
 
 function Portfolio() {
     const [color, setColor] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(3);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['home', 'experience', 'projects', 'about'];
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element && window.scrollY >= element.offsetTop - 160) {
+                    setActiveSection(section);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const updateItemsPerPage = () => {
@@ -22,6 +45,8 @@ function Portfolio() {
         window.addEventListener('resize', updateItemsPerPage);
         return () => window.removeEventListener('resize', updateItemsPerPage);
     }, []);
+
+
 
     const project = [
         {
@@ -82,6 +107,17 @@ function Portfolio() {
         setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
     };
 
+    // Modal functionality
+    const handleImageClick = () => {
+        setSelectedImage('/Resume.png'); // Set the image source for the modal
+        setIsOpen(true); // Open the modal
+    };
+
+    const closeModal = () => {
+        setIsOpen(false); // Close the modal
+        setSelectedImage(null); // Clear the selected image
+    };
+
     return (
         <>
             <div className={`${color ? 'bg-black' : 'bg-white'} py-4 px-4`}>
@@ -89,15 +125,34 @@ function Portfolio() {
 
                     {/* Fixed Navbar */}
                     <nav className={`fixed top-0 left-0 w-full py-4 z-50 ${color ? 'bg-black' : 'bg-white'} px-6`}>
-                        <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#1c1e1e]' : 'bg-white shadow-lg'}`}>
-                            <a href='#' className={`${color ? 'text-white' : 'text-black'} text-sm font-semibold`}>heyyy</a>
+                        <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
+                            <a href='#' className={`${color ? 'text-white' : 'text-black'} text-base md:text-2xl font-bold tracking-wider`}>Web <br /> Developer</a>
                             <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>Home</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>Experience</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>Projects</li>
-                                <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>About</li>
-                            </ul>
+                                <a href="#home">
+                                    <li className={`px-4 py-2 ${activeSection === 'home' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
+                                        Home
+                                    </li>
+                                </a>
 
+                                <a href="#experience">
+                                    <li className={`px-4 py-2 ${activeSection === 'experience' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
+                                        Experience
+                                    </li>
+                                </a>
+
+                                <a href="#projects">
+                                    <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
+                                        Projects
+                                    </li>
+                                </a>
+
+                                <a href="#about">
+                                    <li className={`px-4 py-2 ${activeSection === 'about' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
+                                        About
+                                    </li>
+                                </a>
+
+                            </ul>
                             {/* Mobile menu toggle */}
                             <div className='md:hidden flex items-center'>
                                 {menuOpen ? (
@@ -114,10 +169,18 @@ function Portfolio() {
                             </div>
                             {menuOpen && (
                                 <ul className={`absolute top-20 right-4 shadow-lg rounded-md text-sm font-semibold py-4 px-6 flex flex-col gap-2 ${color ? 'bg-[#1c1e1e] text-white' : 'text-black bg-white'} z-50`}>
-                                    <li className='cursor-pointer'>Home</li>
-                                    <li className='cursor-pointer'>Experience</li>
-                                    <li className='cursor-pointer'>Projects</li>
-                                    <li className='cursor-pointer'>About</li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
+                                        <a href="#home">Home</a>
+                                    </li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
+                                        <a href="#experience">Experience</a>
+                                    </li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
+                                        <a href="#projects">Projects</a>
+                                    </li>
+                                    <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
+                                        <a href="#about">About</a>
+                                    </li>
                                 </ul>
                             )}
 
@@ -141,9 +204,9 @@ function Portfolio() {
                     </nav>
 
                     {/* Main Content */}
-                    <div className='py-24 flex flex-col  items-center'>
+                    <div className={`py-24 flex flex-col  items-center ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                         {/* <h1 className={`${color ? 'text-white' : 'text-black'} text-4xl font-bold text-center`}>My Portfolio</h1> */}
-                        <div className={`grid md:grid-cols-2 md:w-[900px]  md:gap-0 justify-center items-center tracking-wide py-4 md:py-20 ${color ? 'text-white' : 'text-black'}`}>
+                        <div id='home' className={`grid md:grid-cols-2 md:w-[900px]  md:gap-0 justify-center items-center tracking-wide py-4 md:py-20 ${color ? 'text-white' : 'text-black'}`}>
                             <div className=' text-sm md:text-base font-semibold px-6 md:py-24 md:px-24 order-2 md:order-1 flex flex-col md:text-start md:w-[600px]'>
                                 <h2 className='text-2xl font-bold py-2 flex justify-center md:block'>Hello,<br className='md:hidden' />  I'm Shreyash Thaware</h2>
                                 <p className='px-5 md:px-0'>Dedicated to creating impactful tech projects!</p>
@@ -151,9 +214,10 @@ function Portfolio() {
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-pink-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FaInstagram className='font-bold' /></a>
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
+                                    <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div>
                                 <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0'>
-                                    <button className={`bg-blue-600  font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'text-white'} `}>
+                                    <button className={` font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
                                         Resume
                                     </button>
                                 </a>
@@ -164,11 +228,11 @@ function Portfolio() {
                         </div>
 
                         {/* Projects Section with Pagination */}
-                        <div className='text-center py-8'>
+                        <div id='projects' className='py-16'>
                             <div className='flex justify-center items-center gap-6 py-8  md:px-10'>
-                                <div className='line-before h-[1.5px] w-full bg-slate-300 '></div>
+                                <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
-                                <div className='line-after h-[1.5px] w-full bg-slate-300 '></div>
+                                <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
                             </div>
                             <div className='flex flex-wrap justify-center gap-4 py-4'>
                                 {currentProjects.map((item, index) => (
@@ -185,19 +249,87 @@ function Portfolio() {
                                 ))}
                             </div>
                             <div className='flex justify-center mt-4 gap-2'>
-                                {/* <button onClick={goToPreviousPage} disabled={currentPage === 1} className={`cursor-pointer  w-4 h-4 bg-gray-300 rounded-full ${color ? 'bg-gray-300' : 'bg-blue-500 shadow-lg border-2 border-black'} `}></button>
-                                <span className='text-sm'>{currentPage} / {totalPages}</span>
-                                <button onClick={goToNextPage} disabled={currentPage === totalPages} className={`cursor-pointer  w-4 h-4 bg-gray-300 rounded-full ${color ? 'bg-red-500' : 'bg-black shadow-lg border-2 border-black'} `}></button>
-                                 */}
                                 {Array.from({ length: totalPages }, (_, index) => (
                                     <div
                                         key={index}
-                                        className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage ? 'bg-blue-500' : 'bg-gray-300'}`}
+                                        className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage
+                                            ? color ? 'bg-green-500' : 'bg-blue-500' : 'bg-gray-300'
+                                            }`}
                                         onClick={() => setCurrentPage(index + 1)}
                                     ></div>
                                 ))}
                             </div>
                         </div>
+
+
+                        {/* About Section */}
+                        <div id='about' className='py-16 w-full'>
+                            <div className='flex justify-center items-center gap-6 py-8 md:px-20'>
+                                <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
+                                <h2 className={`text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>About Me</h2>
+                                <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
+                            </div>
+                            <div className='flex flex-col md:flex-row justify-center gap-20 px-4 md:px-32 py-16'>
+                                <div className='md:w-[500px]'>
+                                    <p className={`font-semibold ${color ? 'text-white' : ''}`}>
+                                        Hi, I'm <span className={`text-lg tracking-wider ${color ? 'text-green-500' : 'text-blue-600'}`}>Shreyash Thaware,</span> a passionate web developer committed to transforming ideas into interactive, user-focused digital experiences.With a background in modern web development technologies, I specialize in creating clean, responsive, and efficient websites and applications that not only function seamlessly but also offer intuitive user experiences.
+                                        From full-stack development and UI/UX design to performance optimization, I’m dedicated to crafting solutions that not only meet but exceed client expectations.
+                                        When I'm not coding, you'll find me exploring new frameworks, contributing to open-source projects, or brainstorming fresh, creative ways to elevate my craft. Let’s work together to bring your vision to the digital world—innovative, impactful, and crafted with care.
+                                        <br />
+                                        <div className='py-2'>Skills: React, Node.js, JavaScript, HTML, CSS, Tailwind CSS, and more.</div>
+                                    </p>
+                                    <div className='flex gap-3 my-4'>
+                                        <a href='' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-blue-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><FaLinkedin />Linkedin</a>
+                                        <a href='' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-red-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><IoMailUnread />Email</a>
+                                    </div>
+                                </div>
+
+                                <div className='flex justify-center'>
+                                    <div className='w-[270px] bg-red-50 rounded-md border-2 border-gray-400'>
+                                        <div className='bg-black rounded-t-md py-6 flex items-center gap-1 px-4 '>
+                                            <span className='rounded-full w-3 h-3 bg-red-500 '></span>
+                                            <span className='rounded-full w-3 h-3 bg-yellow-500'></span>
+                                            <span className='rounded-full w-3 h-3 bg-green-500'></span>
+                                            <div className='text-white text-xs font-semibold tracking-wider flex w-[200px]  justify-end'>
+                                                <span>Click to preview</span>
+                                            </div>
+                                        </div>
+                                        <div className=' relative'>
+                                            <img
+                                                src="/Resume.png"
+                                                alt="Resume"
+                                                className='rounded-b-md object-cover cursor-pointer w-96 '
+                                                onClick={handleImageClick} // Add onClick event to open modal
+                                            />
+                                            <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0 absolute bottom-5 left-14 md:left-[75px]'>
+                                                <button className={` font-bold text-xs w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
+                                                    Download Resume
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Modal for Resume Image */}
+                        {isOpen && (
+                            <a className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" target='_blank'>
+                                <div className="relative">
+                                    <img src={selectedImage} alt="Resume" className="w-[360px] md:w-[500px]" />
+                                    <button
+                                        onClick={closeModal}
+                                        className="absolute top-4 right-4 bg-white rounded-full p-2 text-black"
+                                    >
+                                        <IoClose />
+                                    </button>
+
+                                </div>
+                            </a>
+                        )}
+
+
+
                         {/* Mobile Toggle Switch at the Bottom */}
                         <div className='md:hidden fixed bottom-10 right-10 flex justify-center py-2'>
                             <label className="relative inline-flex items-center cursor-pointer">
@@ -218,7 +350,7 @@ function Portfolio() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }
