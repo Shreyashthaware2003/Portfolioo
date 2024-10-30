@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
@@ -11,8 +11,17 @@ function Portfolio() {
     const [color, setColor] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const [itemsPerPage, setItemsPerPage] = useState(3);
 
+    useEffect(() => {
+        const updateItemsPerPage = () => {
+            setItemsPerPage(window.innerWidth <= 768 ? 1 : 3);
+        };
+
+        updateItemsPerPage();
+        window.addEventListener('resize', updateItemsPerPage);
+        return () => window.removeEventListener('resize', updateItemsPerPage);
+    }, []);
 
     const project = [
         {
@@ -24,7 +33,7 @@ function Portfolio() {
         },
         {
             imgSrc: '/itech.jpg',
-            imgAlt: 'iTech -  Roots',
+            imgAlt: 'iTech - Roots',
             git: '#',
             project: 'https://itech-roots.vercel.app/',
             title: 'iTech - Roots'
@@ -57,7 +66,6 @@ function Portfolio() {
             project: 'https://todo-list-psi-cyan.vercel.app/',
             title: 'iTask - ToDo List'
         },
-
     ];
 
     const totalPages = Math.ceil(project.length / itemsPerPage);
@@ -164,7 +172,7 @@ function Portfolio() {
                             </div>
                             <div className='flex flex-wrap justify-center gap-4 py-4'>
                                 {currentProjects.map((item, index) => (
-                                    <a href={item.project} target='_blank' key={index} className={`flex flex-col mx-2 md:mx-0 border-2 border-black rounded-md ${color ? 'text-white border-gray-400' : 'text-black'}`}>
+                                    <a href={item.project} target='_blank' key={index} className={`flex flex-col  mx-2 md:mx-0 border-2 border-black rounded-md ${color ? 'text-white border-gray-400' : 'text-black'}`}>
                                         <img src={item.imgSrc} alt={item.imgAlt} className='w-96 md:h-[185px] object-cover rounded-t-md' />
                                         <div className='flex justify-between items-center px-4 py-2  font-semibold'>
                                             <span className='flex gap-2'>
@@ -177,11 +185,16 @@ function Portfolio() {
                                 ))}
                             </div>
                             <div className='flex justify-center mt-4 gap-2'>
-                                {Array.from({ length: totalPages }).map((_, index) => (
-                                    <button
+                                {/* <button onClick={goToPreviousPage} disabled={currentPage === 1} className={`cursor-pointer  w-4 h-4 bg-gray-300 rounded-full ${color ? 'bg-gray-300' : 'bg-blue-500 shadow-lg border-2 border-black'} `}></button>
+                                <span className='text-sm'>{currentPage} / {totalPages}</span>
+                                <button onClick={goToNextPage} disabled={currentPage === totalPages} className={`cursor-pointer  w-4 h-4 bg-gray-300 rounded-full ${color ? 'bg-red-500' : 'bg-black shadow-lg border-2 border-black'} `}></button>
+                                 */}
+                                {Array.from({ length: totalPages }, (_, index) => (
+                                    <div
                                         key={index}
+                                        className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage ? 'bg-blue-500' : 'bg-gray-300'}`}
                                         onClick={() => setCurrentPage(index + 1)}
-                                        className={`cursor-pointer w-4 h-4 rounded-full shadow-lg border-2 border-black ${currentPage === index + 1 ? (color ? 'bg-[#67fd67]' : 'bg-blue-500') : 'bg-gray-300'}`}></button>
+                                    ></div>
                                 ))}
                             </div>
                         </div>
