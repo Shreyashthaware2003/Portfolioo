@@ -247,9 +247,9 @@ function Portfolio() {
                                 <h2 className='text-2xl font-bold py-2 flex justify-center md:block'>Hello,<br className='md:hidden' />  I'm Shreyash Thaware</h2>
                                 <p className='px-5 md:px-0'>Dedicated to creating impactful tech projects!</p>
                                 <div className='flex md:justify-start gap-4 py-6 px-5 md:px-0'>
-                                    <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
+                                    <a href="https://www.linkedin.com/in/shreyash-thaware-168718264/" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-pink-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FaInstagram className='font-bold' /></a>
-                                    <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
+                                    <a href="https://github.com/Shreyashthaware2003" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div>
                                 <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0'>
@@ -264,10 +264,10 @@ function Portfolio() {
                         </div>
 
                         {/* Projects Section with Pagination */}
-                        <div id='projects' className='md:pt-16'>
+                        <div id='projects' className='md:pt-16 px-4'>
                             <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
-                                <h2 className={`text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
+                                <h2 className={`text-xl md:text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
                                 <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
                             </div>
                             <div className='flex flex-wrap justify-center gap-4 py-8'>
@@ -299,7 +299,7 @@ function Portfolio() {
 
 
                         {/* About Section */}
-                        <div id='about' className='pt-16 w-full'>
+                        <div id='about' className='pt-24 w-full px-4'>
                             <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-xl md:text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>About Me</h2>
@@ -349,7 +349,7 @@ function Portfolio() {
                         </div>
 
                         {/* Contact Section */}
-                        <div id='contact' className='pt-16 w-full px-4'>
+                        <div id='contact' className='pt-24 w-full px-4'>
                             <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-xl md:text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>Contact Me</h2>
