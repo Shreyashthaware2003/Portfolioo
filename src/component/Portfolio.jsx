@@ -324,7 +324,7 @@ function Portfolio() {
                                     </div>
                                 </div>
 
-                                <div className='flex justify-center'>
+                                <div className='flex justify-center items-center'>
                                     <div className='w-[270px] h-[446px] bg-red-50 rounded-md border-2 border-gray-400'>
                                         <div className='bg-black rounded-t-md py-6 flex items-center gap-1 px-4 '>
                                             <span className='rounded-full w-3 h-3 bg-red-500 '></span>
