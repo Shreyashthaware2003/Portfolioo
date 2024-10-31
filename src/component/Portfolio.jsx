@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-scroll'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -164,30 +165,30 @@ function Portfolio() {
                         <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                             <a href='#' className={`${color ? 'text-white' : 'text-black'} text-base md:text-2xl font-bold tracking-wider`}>Web <br /> Developer</a>
                             <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
-                                <a href="#home">
+                                <Link to={'home'} smooth={true} offset={-120} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'home' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
                                         Home
                                     </li>
-                                </a>
+                                </Link>
 
-                                <a href="#projects">
+                                <Link to={'projects'} smooth={true} offset={-20} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
                                         Projects
                                     </li>
-                                </a>
+                                </Link>
 
-                                <a href="#about">
+                                <Link to={'about'} smooth={true} offset={-20} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'about' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
                                         About
                                     </li>
-                                </a>
+                                </Link>
 
 
-                                <a href="#contact">
+                                <Link to={'contact'} smooth={true} offset={-20} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'contact' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-500 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white')} rounded-md cursor-pointer`}>
                                         Contact
                                     </li>
-                                </a>
+                                </Link>
                             </ul>
                             {/* Mobile menu toggle */}
                             <div className='md:hidden flex items-center'>
@@ -206,16 +207,16 @@ function Portfolio() {
                             {menuOpen && (
                                 <ul className={`absolute top-20 right-4 shadow-lg rounded-md text-sm font-semibold py-4 px-6 flex flex-col gap-2 ${color ? 'bg-[#1c1e1e] text-white' : 'text-black bg-white'} z-50`}>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <a href="#home">Home</a>
+                                        <Link to={'home'} smooth={true} offset={-120} duration={500}>Home</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <a href="#projects">Projects</a>
+                                        <Link to={'projects'} smooth={true} offset={-20} duration={500}>Projects</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <a href="#about">About</a>
+                                        <Link to={'about'} smooth={true} offset={-20} duration={500}>About</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <a href="#contact">Contact</a>
+                                        <Link to={'contact'} smooth={true} offset={-20} duration={500}>Contact</Link>
                                     </li>
                                 </ul>
                             )}
@@ -253,9 +254,9 @@ function Portfolio() {
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div>
                                 <div className='px-6 md:px-0'>
-                                <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className={` flex justify-center items-center font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
-                                    Resume
-                                </a>
+                                    <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className={` flex justify-center items-center font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
+                                        Resume
+                                    </a>
                                 </div>
                             </div>
                             <div className='flex items-center justify-center order-1 md:order-2'>
@@ -371,7 +372,7 @@ function Portfolio() {
                                     </div>
                                 </div>
                             </form>
-                            <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false}  />
+                            <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} />
                         </div>
 
                         {/* Modal for Resume Image */}
