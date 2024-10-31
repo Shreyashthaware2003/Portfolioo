@@ -56,42 +56,42 @@ function Portfolio() {
         {
             imgSrc: '/spotify.jpg',
             imgAlt: 'Spotify - Clone',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/Spotify-Clone.git',
             project: 'https://spotify-clonee1.vercel.app/',
             title: 'Spotify - Clone'
         },
         {
             imgSrc: '/itech.jpg',
             imgAlt: 'iTech - Roots',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/itechRoots.git',
             project: 'https://itech-roots.vercel.app/',
             title: 'iTech - Roots'
         },
         {
             imgSrc: '/doctor.png',
             imgAlt: 'CarePoint',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/CarePoint.git',
             project: 'https://carepointt.vercel.app/',
             title: 'CarePoint'
         },
         {
             imgSrc: '/store.png',
             imgAlt: 'Quantum - Store',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/Quantum-Store.git',
             project: 'https://quantum-storee1.vercel.app/',
             title: 'Quantum - Store'
         },
         {
             imgSrc: '/text.jpg',
             imgAlt: 'Text - Convertor',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/Text-Convertor.git',
             project: 'https://text-convertor1.vercel.app/',
             title: 'Text - Convertor'
         },
         {
             imgSrc: '/itask.png',
             imgAlt: 'iTask - ToDo List',
-            git: '#',
+            git: 'https://github.com/Shreyashthaware2003/React-Project---Todo-List.git',
             project: 'https://todo-list-psi-cyan.vercel.app/',
             title: 'iTask - ToDo List'
         },
@@ -248,10 +248,13 @@ function Portfolio() {
                                 <h2 className='text-2xl font-bold py-2 flex justify-center md:block'>Hello,<br className='md:hidden' />  I'm Shreyash Thaware</h2>
                                 <p className='px-5 md:px-0'>Dedicated to creating impactful tech projects!</p>
                                 <div className='flex md:justify-start gap-4 py-6 px-5 md:px-0'>
-                                    <a href="https://www.linkedin.com/in/shreyash-thaware-168718264/" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
-                                    <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-pink-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FaInstagram className='font-bold' /></a>
-                                    <a href="https://github.com/Shreyashthaware2003" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
-                                    <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
+                                    <a href="https://www.linkedin.com/in/shreyash-thaware-168718264/" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
+
+                                    <a href="https://www.instagram.com/shrreyy.17/" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-pink-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FaInstagram className='font-bold' /></a>
+
+                                    <a href="https://github.com/Shreyashthaware2003" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
+
+                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shreyashthaware284@gmail.com" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div>
                                 <div className='px-6 md:px-0'>
                                     <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className={` flex justify-center items-center font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
@@ -316,8 +319,8 @@ function Portfolio() {
                                         <div className='py-2'>Skills: React, Node.js, JavaScript, HTML, CSS, Tailwind CSS, and more.</div>
                                     </p>
                                     <div className='flex gap-3 my-4'>
-                                        <a href='' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-blue-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><FaLinkedin />Linkedin</a>
-                                        <a href='' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-red-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><IoMailUnread />Email</a>
+                                        <a href='https://www.linkedin.com/in/shreyash-thaware-168718264/' target='_blank' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-blue-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><FaLinkedin />Linkedin</a>
+                                        <a href='https://mail.google.com/mail/?view=cm&fs=1&to=shreyashthaware284@gmail.com' target='_blank' className='py-2 px-8 rounded-md font-semibold tracking-wide text-white bg-red-600 flex justify-center items-center gap-1 hover:scale-105 duration-150'><IoMailUnread />Email</a>
                                     </div>
                                 </div>
 
