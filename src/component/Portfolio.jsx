@@ -252,11 +252,11 @@ function Portfolio() {
                                     <a href="https://github.com/Shreyashthaware2003" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
                                     <a href="" className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div>
-                                <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0'>
-                                    <button className={` font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
-                                        Resume
-                                    </button>
+                                <div className='px-6 md:px-0'>
+                                <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className={` flex justify-center items-center font-bold text-xl w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
+                                    Resume
                                 </a>
+                                </div>
                             </div>
                             <div className='flex items-center justify-center order-1 md:order-2'>
                                 <img src="/hero.png" alt="Hero" className='w-56 h-auto md:w-auto' />
@@ -264,7 +264,7 @@ function Portfolio() {
                         </div>
 
                         {/* Projects Section with Pagination */}
-                        <div id='projects' className='md:pt-16 px-4'>
+                        <div id='projects' className='pt-16 px-4'>
                             <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-xl md:text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
@@ -337,7 +337,7 @@ function Portfolio() {
                                                 className='rounded-b-md object-cover cursor-pointer w-96 '
                                                 onClick={handleImageClick} // Add onClick event to open modal
                                             />
-                                            <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='px-5 md:px-0 absolute bottom-5 left-14 md:left-[75px]'>
+                                            <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className='md:px-0 absolute bottom-5 left-16 md:left-[75px]'>
                                                 <button className={` font-bold tracking-wide text-xs w-[126px] h-[46px] rounded-2xl shadow-md shadow-gray-500 hover:scale-105 duration-200 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
                                                     Download
                                                 </button>
