@@ -186,7 +186,7 @@ function Portfolio() {
                     <nav className={`fixed top-0 left-0 w-full py-4 z-50 ${color ? 'bg-black' : 'bg-white'} px-6`}>
                         <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                             <div className='flex justify-center items-center gap-1 md:gap-4'>
-                                <img src="/public/hero.png" className='w-12' alt="" />
+                                <img src="/hero.png" className='w-12' alt="" />
                                 <Link to={'home'} smooth={true} offset={-100} duration={500} className={`${color ? 'text-white hover:text-[#67fd67]' : 'text-black hover:text-blue-600'} text-sm md:text-lg font-bold tracking-widest uppercase transition-all duration-300 md:hover:-translate-y-1 cursor-pointer`}>Shreyash Thaware</Link>
                             </div>
                             <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md  ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
@@ -292,9 +292,9 @@ function Portfolio() {
                         {/* mouse */}
                         <div className="flex justify-center items-center">
                             {/* Mouse-like div */}
-                            <div className="relative w-6 h-10 border-2 border-gray-800 rounded-full">
+                            <div className={`relative w-6 h-10 border-2  rounded-full ${color ? "border-white" : "border-gray-800"}`}>
                                 {/* Inner animated dot */}
-                                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-gray-800 rounded-full animate-scroll"></div>
+                                <div className={`absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 ${color ? "bg-white" : "bg-gray-800"} rounded-full animate-scroll`}></div>
                             </div>
                         </div>
 
@@ -428,7 +428,7 @@ function Portfolio() {
 
                         <div className=''>
                             {/* Popup */}
-                            <div className="fixed bottom-12 right-10 md:right-36 order-1 ">
+                            <div className="fixed bottom-24 md:bottom-10 right-10 md:right-36 order-1 ">
                                 <div className="flex flex-col items-end">
                                     {/* Popup Menu */}
                                     <div className={`menu-container ${popOpen ? 'menu-open' : 'menu-closed'}`}>
@@ -476,7 +476,7 @@ function Portfolio() {
 
                                     {/* Toggle Button */}
                                     <div
-                                        className={`border-2 shadow-lg  rounded-full w-8 h-8 flex justify-center items-center transition-all duration-700 transform hover:scale-105 ${isRotated ? 'rotate-180' : ''} ${color ? "bg-[#1c1e1e] border-gray-700" : "bg-white border-gray-300"}`}
+                                        className={`border-2 shadow-lg  rounded-full w-8 h-8 flex justify-center items-center transition-all duration-700 transform hover:scale-105 ${isRotated ? 'rotate-180' : '-rotate-180'} ${color ? "bg-[#1c1e1e] border-gray-700" : "bg-white border-gray-300"}`}
                                         onClick={handleClick}
                                     >
 
@@ -496,7 +496,7 @@ function Portfolio() {
                             </div>
 
                             {/* Mobile Toggle Switch at the Bottom */}
-                            <div className='md:hidden fixed bottom-24 md:bottom-10 right-10 flex justify-center py-2 order-2 order'>
+                            <div className='md:hidden fixed bottom-10 right-10 flex justify-center py-2 order-2 order'>
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input
                                         type="checkbox"
