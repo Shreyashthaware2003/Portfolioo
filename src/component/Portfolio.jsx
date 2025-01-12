@@ -165,7 +165,7 @@ function Portfolio() {
 
     const handleDownload = () => {
         // URL of the resume file
-        const resumeUrl = '/public/Resume1.pdf';
+        const resumeUrl = '/Resume1.pdf';
 
         // Triggering the download
         const link = document.createElement('a');
