@@ -441,7 +441,7 @@ function Portfolio() {
                                                 <li
                                                     className={` cursor-pointer flex justify-center items-center`}
                                                 >
-                                                    <a href='https://www.linkedin.com/in/shreyash-thaware-168718264/' smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
+                                                    <a href='https://www.linkedin.com/in/shreyash-thaware-168718264/' target='_blank' smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
                                                         }`}>
                                                         <FaLinkedinIn />
                                                     </a>
@@ -449,26 +449,26 @@ function Portfolio() {
                                                 <li
                                                     className={`  cursor-pointer flex justify-center items-center`} title='Instagram'
                                                 >
-                                                    <Link to={'projects'} smooth={true} offset={-20} duration={500} title="Instagram" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-pink-600 hover:text-black text-white' : 'hover:bg-pink-600 hover:text-white '
+                                                    <a href='https://www.instagram.com/shrreyy.17/' target='_blank' smooth={true} offset={-20} duration={500} title="Instagram" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-pink-600 hover:text-black text-white' : 'hover:bg-pink-600 hover:text-white '
                                                         }`}>
                                                         <FaInstagram />
-                                                    </Link>
+                                                    </a>
                                                 </li>
                                                 <li
                                                     className={`  cursor-pointer flex justify-center items-center`} title='Github'
                                                 >
-                                                    <Link to={'about'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  ${color ? 'hover:bg-white hover:text-black text-white' : 'hover:bg-black hover:text-white '
+                                                    <a href='https://github.com/Shreyashthaware2003' target='_blank' smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  ${color ? 'hover:bg-white hover:text-black text-white' : 'hover:bg-black hover:text-white '
                                                         } duration-200`}>
                                                         <FiGithub />
-                                                    </Link>
+                                                    </a>
                                                 </li>
                                                 <li
                                                     className={`  cursor-pointer flex justify-center items-center`} title='Mail'
                                                 >
-                                                    <Link to={'contact'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  duration-200  ${color ? 'hover:bg-yellow-500 hover:text-black text-white' : 'hover:bg-yellow-500 hover:text-white '
+                                                    <a href='https://mail.google.com/mail/?view=cm&fs=1&to=shreyashthaware284@gmail.com' target='_blank' smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  duration-200  ${color ? 'hover:bg-yellow-500 hover:text-black text-white' : 'hover:bg-yellow-500 hover:text-white '
                                                         }`}>
                                                         <MdMailOutline />
-                                                    </Link>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         )}
