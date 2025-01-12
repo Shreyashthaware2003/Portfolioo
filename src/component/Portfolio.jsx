@@ -14,6 +14,7 @@ import { IoMailUnread } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa6";
 import { GiClick } from "react-icons/gi";
 import { PiSpinnerBall } from "react-icons/pi";
+import { MdOutlineFileDownload } from "react-icons/md";
 import '../App.css'
 
 function Portfolio() {
@@ -162,6 +163,18 @@ function Portfolio() {
         }
     };
 
+    const handleDownload = () => {
+        // URL of the resume file
+        const resumeUrl = '/public/Resume1.pdf';
+
+        // Triggering the download
+        const link = document.createElement('a');
+        link.href = resumeUrl;
+        link.download = 'Shreyash_Thaware_Resume.pdf'; // File name to save
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link); // Clean up the element
+    };
 
 
     return (
@@ -174,7 +187,7 @@ function Portfolio() {
                         <div className={`mx-auto max-w-7xl flex justify-between items-center px-6 h-14 md:h-24 rounded-md ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                             <div className='flex justify-center items-center gap-1 md:gap-4'>
                                 <img src="/public/hero.png" className='w-12' alt="" />
-                                <a href='#' className={`${color ? 'text-white hover:text-[#67fd67]' : 'text-black hover:text-blue-600'} text-sm md:text-lg font-bold tracking-widest uppercase transition-all duration-300 md:hover:-translate-y-1`}>Shreyash Thaware</a>
+                                <Link to={'home'} smooth={true} offset={-100} duration={500} className={`${color ? 'text-white hover:text-[#67fd67]' : 'text-black hover:text-blue-600'} text-sm md:text-lg font-bold tracking-widest uppercase transition-all duration-300 md:hover:-translate-y-1 cursor-pointer`}>Shreyash Thaware</Link>
                             </div>
                             <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md  ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
                                 <Link to={'home'} smooth={true} offset={-120} duration={500}>
@@ -183,13 +196,13 @@ function Portfolio() {
                                     </li>
                                 </Link>
 
-                                <Link to={'projects'} smooth={true} offset={-20} duration={500}>
+                                <Link to={'projects'} smooth={true} offset={-40} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
                                         Projects
                                     </li>
                                 </Link>
 
-                                <Link to={'about'} smooth={true} offset={-20} duration={500}>
+                                <Link to={'about'} smooth={true} offset={-30} duration={500}>
                                     <li className={`px-4 py-2 ${activeSection === 'about' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
                                         About
                                     </li>
@@ -234,15 +247,15 @@ function Portfolio() {
                             )}
 
                             {/* Dark Mode Toggle */}
-                            <div className="hidden md:flex items-center">
-                                <label className="relative inline-flex items-center cursor-pointer">
+                            <div className="hidden md:flex items-center ">
+                                <label className="relative inline-flex items-center cursor-pointer ">
                                     <input
                                         type="checkbox"
-                                        className="sr-only peer"
+                                        className="sr-only peer "
                                         checked={color}
                                         onChange={() => setColor(!color)}
                                     />
-                                    <div className={`w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none shadow-lg peer-checked:bg-black transition-all flex items-center justify-between px-1 border-2 ${color ? 'border-gray-700' : ''}`}>
+                                    <div className={`w-11 h-6  bg-gray-200 rounded-full peer-focus:outline-none shadow-lg peer-checked:bg-black transition-all flex items-center justify-between px-1 border-2 ${color ? 'border-gray-700' : ''}`}>
                                         <FaSun className={`text-yellow-500 ${color ? 'opacity-100' : 'opacity-0'} transition-opacity text-xs`} />
                                         <FaMoon className={`text-black ${color ? 'opacity-0' : 'opacity-100'} transition-opacity text-xs`} />
                                         <div className={`absolute w-5 h-5 mx-[2px] bg-white rounded-full border border-gray-300 transition-transform peer-checked:translate-x-5 ${color ? 'right-0' : 'left-0'} `}></div>
@@ -255,11 +268,14 @@ function Portfolio() {
                     {/* Main Content */}
                     <div className={`pb-2 pt-24 flex flex-col  items-center rounded-md ${color ? 'bg-[#111212]' : 'bg-white shadow-lg'}`}>
                         {/* <h1 className={`${color ? 'text-white' : 'text-black'} text-4xl font-bold text-center`}>My Portfolio</h1> */}
-                        <div id='home' className={`grid md:grid-cols-2 md:w-[900px]  md:gap-0 justify-center items-center tracking-wide py-4 md:py-20 ${color ? 'text-white' : 'text-black'}`}>
-                            <div className=' text-sm md:text-base font-semibold px-6 md:py-24 md:px-24 order-2 md:order-1 flex flex-col md:text-start md:w-[600px]'>
-                                <h2 className='text-2xl font-bold py-2 flex justify-center md:block'>Hello,<br className='md:hidden' />  I'm Shreyash Thaware</h2>
-                                <p className='px-5 md:px-0'>Dedicated to creating impactful tech projects!</p>
-                                <div className='flex md:justify-start gap-4 py-6 px-5 md:px-0'>
+                        <div id='home' className={`flex flex-col md:w-[900px]  md:gap-0 justify-center items-center tracking-wide py-4 md:py-20 ${color ? 'text-white' : 'text-black'}`}>
+                            <div className='flex items-center justify-center'>
+                                <img src="/hero.png" alt="Hero" className='w-56 h-auto md:w-auto' />
+                            </div>
+                            <div className=' text-sm md:text-base font-semibold px-6 py-6  md:px-24 flex flex-col justify-center items-center '>
+                                <h2 className='text-xl md:text-4xl font-bold py-2 flex justify-center items-center md:block text-center'>Hello, I'm Shreyash Thaware</h2>
+                                <p className='px-5 md:px-0 text-center'>Dedicated to creating impactful tech projects!</p>
+                                {/* <div className='flex md:justify-start gap-4 py-6 px-5 md:px-0'>
                                     <a href="https://www.linkedin.com/in/shreyash-thaware-168718264/" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
 
                                     <a href="https://www.instagram.com/shrreyy.17/" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-pink-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FaInstagram className='font-bold' /></a>
@@ -267,16 +283,23 @@ function Portfolio() {
                                     <a href="https://github.com/Shreyashthaware2003" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-black hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><FiGithub /></a>
 
                                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shreyashthaware284@gmail.com" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
-                                </div>
+                                </div> */}
+                                <Link to={'projects'} smooth={true} offset={-80} duration={500} className={` w-fit text-center py-2 px-20 my-4 cursor-pointer hover:-translate-y-1 duration-500 rounded-md uppercase font-bold tracking-wider transition-all ${color ? "bg-green-500 text-black" : " bg-blue-600 text-white"}`}>project</Link>
 
                             </div>
-                            <div className='flex items-center justify-center order-1 md:order-2'>
-                                <img src="/hero.png" alt="Hero" className='w-56 h-auto md:w-auto' />
+                        </div>
+
+                        {/* mouse */}
+                        <div className="flex justify-center items-center">
+                            {/* Mouse-like div */}
+                            <div className="relative w-6 h-10 border-2 border-gray-800 rounded-full">
+                                {/* Inner animated dot */}
+                                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-gray-800 rounded-full animate-scroll"></div>
                             </div>
                         </div>
 
                         {/* Projects Section with Pagination */}
-                        <div id='projects' className='pt-16 px-4'>
+                        <div id='projects' className='md:pt-16 px-4'>
                             <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-xl md:text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
@@ -309,9 +332,8 @@ function Portfolio() {
                             </div>
                         </div>
 
-
                         {/* About Section */}
-                        <div id='about' className='pt-24 w-full px-4'>
+                        <div id='about' className='pt-16 w-full px-4'>
                             <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
                                 <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
                                 <h2 className={`text-xl md:text-2xl font-bold uppercase text-nowrap ${color ? 'text-white' : ''}`}>About Me</h2>
@@ -360,6 +382,8 @@ function Portfolio() {
                             </div>
                         </div>
 
+
+
                         {/* Contact Section */}
                         <div id='contact' className='pt-24 w-full px-4'>
                             <div className='flex justify-center items-center gap-4 md:gap-6 py-8 md:px-20'>
@@ -402,90 +426,92 @@ function Portfolio() {
                         )}
 
 
+                        <div className=''>
+                            {/* Popup */}
+                            <div className="fixed bottom-12 right-10 md:right-36 order-1 ">
+                                <div className="flex flex-col items-end">
+                                    {/* Popup Menu */}
+                                    <div className={`menu-container ${popOpen ? 'menu-open' : 'menu-closed'}`}>
+                                        {popOpen && (
+                                            <ul
+                                                className={`shadow-lg rounded-md text-sm font-semibold py-4 px-2 flex flex-col gap-4 ${color ? 'bg-[#1c1e1e] text-white' : 'text-black bg-white'
+                                                    }`}
+                                            >
+                                                <button className='hover:bg-red-600 hover:text-white duration-200 text-lg flex justify-center items-center p-2 rounded-full' title='Resume' onClick={handleDownload}><MdOutlineFileDownload /></button>
+                                                <li
+                                                    className={` cursor-pointer flex justify-center items-center`}
+                                                >
+                                                    <Link to={'home'} smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
+                                                        }`}>
+                                                        <FaLinkedinIn />
+                                                    </Link>
+                                                </li>
+                                                <li
+                                                    className={`  cursor-pointer flex justify-center items-center`} title='Instagram'
+                                                >
+                                                    <Link to={'projects'} smooth={true} offset={-20} duration={500} title="Instagram" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-pink-600 hover:text-black text-white' : 'hover:bg-pink-600 hover:text-white '
+                                                        }`}>
+                                                        <FaInstagram />
+                                                    </Link>
+                                                </li>
+                                                <li
+                                                    className={`  cursor-pointer flex justify-center items-center`} title='Github'
+                                                >
+                                                    <Link to={'about'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  ${color ? 'hover:bg-white hover:text-black text-white' : 'hover:bg-black hover:text-white '
+                                                        } duration-200`}>
+                                                        <FiGithub />
+                                                    </Link>
+                                                </li>
+                                                <li
+                                                    className={`  cursor-pointer flex justify-center items-center`} title='Mail'
+                                                >
+                                                    <Link to={'contact'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  duration-200  ${color ? 'hover:bg-yellow-500 hover:text-black text-white' : 'hover:bg-yellow-500 hover:text-white '
+                                                        }`}>
+                                                        <MdMailOutline />
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        )}
+                                    </div>
 
-                        {/* Mobile Toggle Switch at the Bottom */}
-                        <div className='md:hidden fixed bottom-10 right-10 flex justify-center py-2'>
-                            <label className="relative inline-flex items-center cursor-pointer">
-                                <input
-                                    type="checkbox"
-                                    className="sr-only peer"
-                                    checked={color}
-                                    onChange={() => setColor(!color)}
-                                />
-                                <div className={`w-8 h-8 bg-gray-200 rounded-full peer-focus:outline-none shadow-lg peer-checked:bg-black transition-all flex items-center justify-center px-1 border-2 ${color ? 'border-gray-700' : ''}`}>
-                                    {color ? (
-                                        <FaSun className="text-yellow-500 text-xl" />
-                                    ) : (
-                                        <FaMoon className="text-black text-xl" />
-                                    )}
+                                    {/* Toggle Button */}
+                                    <div
+                                        className={`border-2 shadow-lg  rounded-full w-8 h-8 flex justify-center items-center transition-all duration-700 transform hover:scale-105 ${isRotated ? 'rotate-180' : ''} ${color ? "bg-[#1c1e1e] border-gray-700" : "bg-white border-gray-300"}`}
+                                        onClick={handleClick}
+                                    >
+
+                                        {popOpen ? (
+                                            <PiSpinnerBall
+                                                onClick={() => setPopOpen(false)}
+                                                className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`}
+                                            />
+                                        ) : (
+                                            <PiSpinnerBall
+                                                onClick={() => setPopOpen(true)}
+                                                className={`cursor-pointer text-xl ${color ? 'text-white ' : 'text-black'}`}
+                                            />
+                                        )}
+                                    </div>
                                 </div>
-                            </label>
-                        </div>
+                            </div>
 
-                        {/* Popup */}
-                        <div className="fixed bottom-10 right-36">
-                            <div className="flex flex-col items-end">
-                                {/* Popup Menu */}
-                                <div className={`menu-container  ${popOpen ? 'menu-open' : 'menu-closed'}`}>
-                                    {popOpen && (
-                                        <ul
-                                            className={`shadow-lg rounded-md text-sm font-semibold py-4 px-2 flex flex-col gap-4 ${color ? 'bg-[#1c1e1e] text-white' : 'text-black bg-white'
-                                                }`}
-                                        >
-                                            <li
-                                                className={` cursor-pointer flex justify-center items-center`}
-                                            >
-                                                <Link to={'home'} smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
-                                                    }`}>
-                                                    <FaLinkedinIn />
-                                                </Link>
-                                            </li>
-                                            <li
-                                                className={`  cursor-pointer flex justify-center items-center`} title='Instagram'
-                                            >
-                                                <Link to={'projects'} smooth={true} offset={-20} duration={500} title="Instagram" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-pink-600 hover:text-black text-white' : 'hover:bg-pink-600 hover:text-white '
-                                                    }`}>
-                                                    <FaInstagram />
-                                                </Link>
-                                            </li>
-                                            <li
-                                                className={`  cursor-pointer flex justify-center items-center`} title='Github'
-                                            >
-                                                <Link to={'about'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  ${color ? 'hover:bg-white hover:text-black text-white' : 'hover:bg-black hover:text-white '
-                                                    } duration-200`}>
-                                                    <FiGithub />
-                                                </Link>
-                                            </li>
-                                            <li
-                                                className={`  cursor-pointer flex justify-center items-center`} title='Mail'
-                                            >
-                                                <Link to={'contact'} smooth={true} offset={-20} duration={500} className={` py-2 px-2 rounded-full  duration-200  ${color ? 'hover:bg-yellow-500 hover:text-black text-white' : 'hover:bg-yellow-500 hover:text-white '
-                                                    }`}>
-                                                    <MdMailOutline />
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    )}
-                                </div>
-
-                                {/* Toggle Button */}
-                                <div
-                                    className={`border rounded-full p-2 flex justify-center items-center transition-all duration-700 transform hover:scale-105 ${isRotated ? 'rotate-180' : ''}`}
-                                    onClick={handleClick}
-                                >
-
-                                    {popOpen ? (
-                                        <PiSpinnerBall
-                                            onClick={() => setPopOpen(false)}
-                                            className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`}
-                                        />
-                                    ) : (
-                                        <PiSpinnerBall
-                                            onClick={() => setPopOpen(true)}
-                                            className={`cursor-pointer text-xl ${color ? 'text-white' : 'text-black'}`}
-                                        />
-                                    )}
-                                </div>
+                            {/* Mobile Toggle Switch at the Bottom */}
+                            <div className='md:hidden fixed bottom-24 md:bottom-10 right-10 flex justify-center py-2 order-2 order'>
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        className="sr-only peer"
+                                        checked={color}
+                                        onChange={() => setColor(!color)}
+                                    />
+                                    <div className={`w-8 h-8 bg-white rounded-full peer-focus:outline-none shadow-lg peer-checked:bg-[#1c1e1e] transition-all flex items-center justify-center px-1 border-2 ${color ? 'border-gray-700' : ''}`}>
+                                        {color ? (
+                                            <FaSun className="text-yellow-500 text-xl" />
+                                        ) : (
+                                            <FaMoon className="text-black text-xl" />
+                                        )}
+                                    </div>
+                                </label>
                             </div>
                         </div>
 
