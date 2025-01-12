@@ -441,10 +441,10 @@ function Portfolio() {
                                                 <li
                                                     className={` cursor-pointer flex justify-center items-center`}
                                                 >
-                                                    <Link to={'home'} smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
+                                                    <a href='https://www.linkedin.com/in/shreyash-thaware-168718264/' smooth={true} offset={-120} duration={500} title="Linkedin" className={` py-2 px-2 rounded-full duration-200 ${color ? 'hover:bg-blue-600 hover:text-white text-white' : 'hover:bg-blue-600 hover:text-white'
                                                         }`}>
                                                         <FaLinkedinIn />
-                                                    </Link>
+                                                    </a>
                                                 </li>
                                                 <li
                                                     className={`  cursor-pointer flex justify-center items-center`} title='Instagram'
