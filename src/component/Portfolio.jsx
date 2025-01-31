@@ -237,10 +237,10 @@ function Portfolio() {
                                         <Link to={'home'} smooth={true} offset={-120} duration={500}>Home</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <Link to={'projects'} smooth={true} offset={-20} duration={500}>Projects</Link>
+                                        <Link to={'about'} smooth={true} offset={-20} duration={500}>About</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
-                                        <Link to={'about'} smooth={true} offset={-20} duration={500}>About</Link>
+                                        <Link to={'projects'} smooth={true} offset={-20} duration={500}>Projects</Link>
                                     </li>
                                     <li className={`px-4 py-2 ${color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-600 hover:text-white'} rounded-md cursor-pointer`}>
                                         <Link to={'contact'} smooth={true} offset={-20} duration={500}>Contact</Link>
