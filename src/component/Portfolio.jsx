@@ -15,6 +15,8 @@ import { FaLinkedin } from "react-icons/fa6";
 import { GiClick } from "react-icons/gi";
 import { PiSpinnerBall } from "react-icons/pi";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { IoMdSend } from "react-icons/io";
+import { FiDownload } from "react-icons/fi";
 import '../App.css'
 
 function Portfolio() {
@@ -36,7 +38,7 @@ function Portfolio() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['home', 'projects', 'about', 'contact'];
+            const sections = ['home', 'about', 'projects', 'contact'];
             for (const section of sections) {
                 const element = document.getElementById(section);
                 if (element && window.scrollY >= element.offsetTop - 160) {
@@ -189,28 +191,28 @@ function Portfolio() {
                                 <img src="/hero.png" className='w-12' alt="" />
                                 <Link to={'home'} smooth={true} offset={-100} duration={500} className={`${color ? 'text-white hover:text-[#67fd67]' : 'text-black hover:text-blue-600'} text-sm md:text-lg font-bold tracking-widest uppercase transition-all duration-300 md:hover:-translate-y-1 cursor-pointer`}>Shreyash Thaware</Link>
                             </div>
-                            <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md  ${color ? 'bg-[#0e0f0f]' : 'bg-white'}`}>
+                            <ul className={`hidden md:flex justify-center items-center gap-2 text-sm font-semibold shadow-lg py-2 px-2 rounded-md  ${color ? 'bg-[#0e0f0f]' : 'bg-white'} `}>
                                 <Link to={'home'} smooth={true} offset={-120} duration={500}>
-                                    <li className={`px-4 py-2 ${activeSection === 'home' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
+                                    <li className={`px-4 py-2 ${activeSection === 'home' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer transition-all duration-200`}>
                                         Home
                                     </li>
                                 </Link>
 
-                                <Link to={'projects'} smooth={true} offset={-40} duration={500}>
-                                    <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
-                                        Projects
-                                    </li>
-                                </Link>
-
                                 <Link to={'about'} smooth={true} offset={-30} duration={500}>
-                                    <li className={`px-4 py-2 ${activeSection === 'about' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
+                                    <li className={`px-4 py-2 ${activeSection === 'about' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer transition-all duration-200`}>
                                         About
                                     </li>
                                 </Link>
 
 
+                                <Link to={'projects'} smooth={true} offset={-40} duration={500}>
+                                    <li className={`px-4 py-2 ${activeSection === 'projects' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer transition-all duration-200`}>
+                                        Projects
+                                    </li>
+                                </Link>
+
                                 <Link to={'contact'} smooth={true} offset={-20} duration={500}>
-                                    <li className={`px-4 py-2 ${activeSection === 'contact' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer`}>
+                                    <li className={`px-4 py-2 ${activeSection === 'contact' ? (color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white') : (color ? 'hover:bg-[#67fd67] hover:text-black text-white' : 'hover:bg-blue-700 hover:text-white')} rounded-md cursor-pointer transition-all duration-200`}>
                                         Contact
                                     </li>
                                 </Link>
@@ -273,8 +275,8 @@ function Portfolio() {
                                 <img src="/hero.png" alt="Hero" className='w-56 h-auto md:w-auto' />
                             </div>
                             <div className=' text-sm md:text-base font-semibold px-6 py-6  md:px-24 flex flex-col justify-center items-center '>
-                                <h2 className='text-xl md:text-4xl font-bold py-2 flex justify-center items-center md:block text-center'>Hello, I'm Shreyash Thaware</h2>
-                                <p className='px-5 md:px-0 text-center'>Dedicated to creating impactful tech projects!</p>
+                                <h2 className='text-xl md:text-2xl font-bold py-2 flex justify-center items-center md:block text-center'>Hello, I'm Shreyash Thaware</h2>
+                                <p className='px-5 py-2 md:px-0 text-center max-w-md'>I am a passionate full stack web developer (MERN) with a focus on creating stunning pixel-perfect interactive websites.</p>
                                 {/* <div className='flex md:justify-start gap-4 py-6 px-5 md:px-0'>
                                     <a href="https://www.linkedin.com/in/shreyash-thaware-168718264/" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-blue-600 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''} `}><FaLinkedinIn /></a>
 
@@ -284,7 +286,15 @@ function Portfolio() {
 
                                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shreyashthaware284@gmail.com" target='_blank' className={`w-8 h-8 rounded-full shadow-lg bg-gray-100 text-lg hover:bg-yellow-500 hover:text-white hover:scale-125 duration-300 flex justify-center items-center ${color ? 'text-black border border-gray-400' : ''}`}><MdMailOutline /></a>
                                 </div> */}
-                                <Link to={'projects'} smooth={true} offset={-80} duration={500} className={` w-fit text-center py-2 px-20 my-4 cursor-pointer hover:-translate-y-1 duration-500 rounded-md uppercase font-bold tracking-wider transition-all ${color ? "bg-green-500 text-black" : " bg-blue-600 text-white"}`}>project</Link>
+                                <div className=' flex justify-center items-center gap-4'>
+                                    <Link to={'contact'} smooth={true} offset={-80} duration={500} className={` flex justify-center items-center gap-2 w-fit text-center py-2 px-4 my-4 cursor-pointer hover:scale-105 duration-500 rounded-md font-semibold tracking-wider transition-all ${color ? "bg-[#67fd67] text-black" : " bg-blue-600 text-white"}`}>Contact <IoMdSend /></Link>
+
+                                    <a href="/Resume1.pdf" download="Shreyash_Thaware_Resume.pdf" className=''>
+                                        <button className={` flex justify-center items-center gap-2 font-semibold tracking-wide rounded-md py-2 px-4 w-fit  hover:scale-105 duration-500 ${color ? 'bg-[#67fd67] text-black' : 'bg-blue-600 text-white'} `}>
+                                            Download CV <FiDownload />
+                                        </button>
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
@@ -295,40 +305,6 @@ function Portfolio() {
                             <div className={`relative w-6 h-10 border-2  rounded-full ${color ? "border-white" : "border-gray-800"}`}>
                                 {/* Inner animated dot */}
                                 <div className={`absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 ${color ? "bg-white" : "bg-gray-800"} rounded-full animate-scroll`}></div>
-                            </div>
-                        </div>
-
-                        {/* Projects Section with Pagination */}
-                        <div id='projects' className='md:pt-16 px-4'>
-                            <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
-                                <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
-                                <h2 className={`text-xl md:text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
-                                <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
-                            </div>
-                            <div className='flex flex-wrap justify-center gap-4 py-8'>
-                                {currentProjects.map((item, index) => (
-                                    <a href={item.project} target='_blank' key={index} className={`flex flex-col  mx-2 md:mx-0 border-2 border-black rounded-md ${color ? 'text-white border-gray-400' : 'text-black'}`}>
-                                        <img src={item.imgSrc} alt={item.imgAlt} className='w-96 md:h-[185px] object-cover rounded-t-md' />
-                                        <div className='flex justify-between items-center px-4 py-2  font-semibold'>
-                                            <span className='flex gap-2'>
-                                                <a href={item.git}><FiGithub className={`rounded-full hover:scale-110 duration-100 w-8 h-8 py-2 shadow-lg bg-white ${color ? 'text-black' : ''}`} /></a>
-                                                <a href={item.project}><IoLink className={`rounded-full hover:scale-110 duration-100 w-8 h-8 py-2 shadow-lg bg-white ${color ? 'text-black' : ''}`} /></a>
-                                            </span>
-                                            {item.title}
-                                        </div>
-                                    </a>
-                                ))}
-                            </div>
-                            <div className='flex justify-center mt-4 gap-2'>
-                                {Array.from({ length: totalPages }, (_, index) => (
-                                    <div
-                                        key={index}
-                                        className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage
-                                            ? color ? 'bg-green-500 border-2 shadow-white' : 'bg-blue-500 border-2 border-black ' : 'bg-gray-300'
-                                            }`}
-                                        onClick={() => setCurrentPage(index + 1)}
-                                    ></div>
-                                ))}
                             </div>
                         </div>
 
@@ -381,6 +357,42 @@ function Portfolio() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Projects Section with Pagination */}
+                        <div id='projects' className='md:pt-16 px-4'>
+                            <div className='flex justify-center items-center gap-6 py-20  md:px-10'>
+                                <div className='line-before h-[1.6px] w-full bg-slate-300 '></div>
+                                <h2 className={`text-xl md:text-2xl font-bold uppercase ${color ? 'text-white' : ''}`}>Projects</h2>
+                                <div className='line-after h-[1.6px] w-full bg-slate-300 '></div>
+                            </div>
+                            <div className='flex flex-wrap justify-center gap-4 py-8'>
+                                {currentProjects.map((item, index) => (
+                                    <a href={item.project} target='_blank' key={index} className={`flex flex-col  mx-2 md:mx-0 border-2 border-black rounded-md ${color ? 'text-white border-gray-400' : 'text-black'}`}>
+                                        <img src={item.imgSrc} alt={item.imgAlt} className='w-96 md:h-[185px] object-cover rounded-t-md' />
+                                        <div className='flex justify-between items-center px-4 py-2  font-semibold'>
+                                            <span className='flex gap-2'>
+                                                <a href={item.git}><FiGithub className={`rounded-full hover:scale-110 duration-100 w-8 h-8 py-2 shadow-lg bg-white ${color ? 'text-black' : ''}`} /></a>
+                                                <a href={item.project}><IoLink className={`rounded-full hover:scale-110 duration-100 w-8 h-8 py-2 shadow-lg bg-white ${color ? 'text-black' : ''}`} /></a>
+                                            </span>
+                                            {item.title}
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                            <div className='flex justify-center mt-4 gap-2'>
+                                {Array.from({ length: totalPages }, (_, index) => (
+                                    <div
+                                        key={index}
+                                        className={`w-4 h-4 rounded-full cursor-pointer ${index + 1 === currentPage
+                                            ? color ? 'bg-green-500 border-2 shadow-white' : 'bg-blue-500 border-2 border-black ' : 'bg-gray-300'
+                                            }`}
+                                        onClick={() => setCurrentPage(index + 1)}
+                                    ></div>
+                                ))}
+                            </div>
+                        </div>
+
+
 
 
 
