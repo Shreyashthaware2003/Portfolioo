@@ -262,7 +262,7 @@ function App() {
 
   return (
     <>
-      <div className={`${darkMode ? 'bg-black text-white' : 'bg-white text-black'} transition-all duration-300  px-4 cursor-default`}>
+      <div className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} transition-all duration-300  px-4 cursor-default`}>
         <div className='max-w-4xl mx-auto py-10'>
 
           {/* Navbar */}
@@ -281,8 +281,8 @@ function App() {
                       duration={500}
                       offset={-80}
                       className={`${darkMode
-                        ? "hover:bg-[#27272a] duration-200"
-                        : "hover:bg-gray-200 duration-200"
+                        ? "hover:bg-gray-200 duration-200"
+                        : "hover:bg-[#27272a] duration-200"
                         } px-3 py-2 rounded-md flex items-center cursor-pointer`}
                       onClick={handleLinkClick}
                     >
@@ -296,8 +296,8 @@ function App() {
               <div className="hidden md:flex items-center gap-4 transition-all duration-300">
                 <div
                   className={`${darkMode
-                    ? "hover:bg-[#27272a] duration-200"
-                    : "hover:bg-gray-200 duration-200"
+                    ? "hover:bg-gray-200  duration-200"
+                    : "hover:bg-[#27272a] duration-200"
                     } px-3 py-2 rounded-md flex items-center gap-4 cursor-pointer`}
                   onClick={() => setDarkMode(!darkMode)}
                 >
@@ -306,8 +306,8 @@ function App() {
                 <button
                   onClick={() => setShowModal(true)}
                   className={`${darkMode
-                    ? "bg-white text-black hover:bg-gray-200 duration-200"
-                    : "bg-black text-white hover:bg-[#27272a] duration-200"
+                    ? "bg-black text-white hover:bg-[#27272a] duration-200"
+                    : "bg-white text-black hover:bg-gray-200 duration-200"
                     } px-3 py-1 rounded-md cursor-pointer`}
                 >
                   Reach Me
@@ -339,7 +339,7 @@ function App() {
             <ul
               className={`md:hidden fixed top-0 right-0 h-screen w-full
       transform transition-transform duration-300 ease-in-out z-40
-      ${darkMode ? "bg-black text-white" : "bg-white text-black"}
+      ${darkMode ? "bg-white text-black" : "bg-black text-white"}
       ${menuOpen ? "translate-x-0" : "translate-x-full"}
     `}
             >
@@ -347,7 +347,7 @@ function App() {
                 <h1 className='text-2xl'>Menu</h1>
                 <IoClose
                   onClick={() => setMenuOpen(false)}
-                  className={`cursor-pointer text-2xl absolute right-4  ${darkMode ? 'text-white' : 'text-black'}`}
+                  className={`cursor-pointer text-2xl absolute right-4  ${darkMode ? 'text-black' : 'text-white'}`}
                 />
               </div>
               {nav.map((item, index) => (
@@ -375,8 +375,8 @@ function App() {
                     setMenuOpen(false);
                   }}
                   className={`w-full ${darkMode
-                    ? "bg-white text-black hover:bg-gray-200 duration-200"
-                    : "bg-black text-white hover:bg-[#27272a] duration-200"
+                    ? "bg-black text-white hover:bg-[#27272a] duration-200"
+                    : "bg-white text-black hover:bg-gray-200 duration-200"
                     } px-3 py-2 rounded-md cursor-pointer`}
                 >
                   Reach Me
@@ -389,136 +389,155 @@ function App() {
           {/* Modal Overlay with blur */}
           {showModal && (
             <div
-              className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-md"
-            // onClick={() => setShowModal(false)}
+              className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-md p-4"
             >
-              <div
-                className={`w-[90%] max-w-3xl rounded-xl border shadow-lg p-6 relative ${darkMode ? 'bg-black text-black border-gray-800' : 'bg-white text-black border-gray-200'}`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="grid md:grid-cols-2 gap-10">
-                  {/* Left Column - Contact Info */}
-                  <div className="space-y-6">
-                    <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>Get In Touch</h3>
-                    <div className="space-y-4">
-                      {/* Email */}
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-muted ${darkMode ? 'bg-[#27272a] text-white' : 'bg-gray-200 text-black'} flex items-center justify-center`}>
-                          <FiMail />
+              <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 w-full max-w-5xl">
+                {/* Main Modal Box */}
+                <div
+                  className={`w-full sm:w-[90%] rounded-xl border shadow-lg p-4 sm:p-6 relative overflow-y-auto max-h-[90vh] ${darkMode
+                      ? "bg-white text-black border-gray-200"
+                      : "bg-[#27272a] text-white border-gray-800"
+                    }`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                    {/* Left Column - Contact Info */}
+                    <div className="space-y-6">
+                      <h3 className={`text-xl font-semibold ${darkMode ? 'text-black' : 'text-white'}`}>Get In Touch</h3>
+                      <div className="space-y-4">
+                        {/* Email */}
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-200 text-black' : 'bg-[#27272a] text-white'}`}>
+                            <FiMail />
+                          </div>
+                          <div>
+                            <p className={`text-sm ${darkMode ? 'text-black' : 'text-white'}`}>Email</p>
+                            <a className={`font-medium hover:underline ${darkMode ? 'text-black' : 'text-white'}`} href="mailto:shreyashthaware284@gmail.com">
+                              shreyashthaware284@gmail.com
+                            </a>
+                          </div>
                         </div>
-                        <div>
-                          <p className={`text-sm text-muted-foreground ${darkMode ? 'text-white' : 'text-black'}`}>Email</p>
-                          <a className={`font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`} href="mailto:shreyashthaware284@gmail.com">
-                            shreyashthaware284@gmail.com
-                          </a>
-                        </div>
-                      </div>
 
-                      {/* Phone */}
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-muted ${darkMode ? 'bg-[#27272a] text-white' : 'bg-gray-200 text-black'} flex items-center justify-center`}>
-                          <FiPhone />
+                        {/* Phone */}
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-200 text-black' : 'bg-[#27272a] text-white'}`}>
+                            <FiPhone />
+                          </div>
+                          <div>
+                            <p className={`text-sm ${darkMode ? 'text-black' : 'text-white'}`}>Phone</p>
+                            <a className={`font-medium hover:underline ${darkMode ? 'text-black' : 'text-white'}`} href="tel:8459220920">
+                              +91 84592 20920
+                            </a>
+                          </div>
                         </div>
-                        <div>
-                          <p className={`text-sm text-muted-foreground ${darkMode ? 'text-white' : 'text-black'}`}>Phone</p>
-                          <a className={`font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`} href="tel:8459220920">
-                            +91 84592 20920
-                          </a>
-                        </div>
-                      </div>
 
-                      {/* Location */}
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-muted ${darkMode ? 'bg-[#27272a] text-white' : 'bg-gray-200 text-black'} flex items-center justify-center`}>
-                          <CiLocationOn />
+                        {/* Location */}
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-200 text-black' : 'bg-[#27272a] text-white'}`}>
+                            <CiLocationOn />
+                          </div>
+                          <div>
+                            <p className={`text-sm ${darkMode ? 'text-black' : 'text-white'}`}>Location</p>
+                            <p className={`font-medium ${darkMode ? 'text-black' : 'text-white'}`}>Nagpur, India</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className={`text-sm text-muted-foreground ${darkMode ? 'text-white' : 'text-black'}`}>Location</p>
-                          <p className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`} >Nagpur, India</p>
-                        </div>
-                      </div>
 
-                      {/* LinkedIn */}
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-muted ${darkMode ? 'bg-[#27272a] text-white' : 'bg-gray-200 text-black'} flex items-center justify-center`}>
-                          <FiLinkedin />
-                        </div>
-                        <div>
-                          <p className={`text-sm text-muted-foreground ${darkMode ? 'text-white' : 'text-black'}`}>LinkedIn</p>
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`}
-                            href="https://www.linkedin.com/in/shreyash-thaware-168718264/"
-                          >
-                            linkedin.com/in/shreyash-thaware
-                          </a>
+                        {/* LinkedIn */}
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-200 text-black' : 'bg-[#27272a] text-white'}`}>
+                            <FiLinkedin />
+                          </div>
+                          <div>
+                            <p className={`text-sm ${darkMode ? 'text-black' : 'text-white'}`}>LinkedIn</p>
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`font-medium hover:underline ${darkMode ? 'text-black' : 'text-white'}`}
+                              href="https://www.linkedin.com/in/shreyash-thaware-168718264/"
+                            >
+                              linkedin.com/in/shreyash-thaware
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Right Column - Contact Form */}
-                  <div className={`${darkMode ? 'text-white' : 'text-black'}`}>
-                    <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
-                    <form className="space-y-4" onSubmit={onSubmit}>
-                      <div className="grid sm:grid-cols-2 gap-4">
+                    {/* Right Column - Contact Form */}
+                    <div className={`${darkMode ? 'text-black' : 'text-white'}`}>
+                      <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
+                      <form className="space-y-4" onSubmit={onSubmit}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {/* Name Field */}
+                          <div className="space-y-2">
+                            <label htmlFor="name" className="text-sm">Name</label>
+                            <input
+                              id="name"
+                              name="name"
+                              placeholder="Your name"
+                              required
+                              className={`w-full h-10 px-3 py-2 text-base rounded-md border focus:outline-none focus:ring-2 ${darkMode ? 'border-gray-200' : 'border-white'}`}
+                            />
+                          </div>
+
+                          {/* Email Field */}
+                          <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm">Email</label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              placeholder="Your email"
+                              required
+                              className={`w-full h-10 px-3 py-2 text-base rounded-md border focus:outline-none focus:ring-2 ${darkMode ? 'border-gray-200' : 'border-white'}`}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Message Field */}
                         <div className="space-y-2">
-                          <label htmlFor="name" className="text-sm">Name</label>
-                          <input
-                            id="name"
-                            name="name"
-                            placeholder="Your name"
+                          <label htmlFor="message" className="text-sm">Message</label>
+                          <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Your message"
+                            rows="5"
                             required
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
+                            className={`w-full px-3 py-2 text-base rounded-md border focus:outline-none focus:ring-2 ${darkMode ? 'border-gray-200' : 'border-white'}`}
                           />
                         </div>
-                        <div className="space-y-2">
-                          <label htmlFor="email" className="text-sm">Email</label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Your email"
-                            required
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
-                          />
-                        </div>
-                      </div>
 
-                      <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm">Message</label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          placeholder="Your message"
-                          rows="5"
-                          required
-                          className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-base placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm"
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        className={`inline-flex items-center justify-center gap-2 rounded-md ${darkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-[#27272a]'} cursor-pointer h-10 px-4 py-2 w-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}
-                      >
-                        Submit Message
-                      </button>
-
-                      <button
-                        type='button'
-                        onClick={() => setShowModal(false)}
-                        className={`${darkMode ? 'bg-white text-black hover:bg-gray-200 duration-200' : 'bg-black text-white hover:bg-[#27272a] duration-200'} px-4 py-2 rounded-md border cursor-pointer`}
-                      >
-                        Close
-                      </button>
-                    </form>
-
+                        {/* Submit Button */}
+                        <button
+                          type="submit"
+                          className={`w-full h-10 px-4 py-2 rounded-md font-medium text-sm transition-colors focus:outline-none focus:ring-2 cursor-pointer ${darkMode
+                              ? 'bg-black text-white hover:bg-[#27272a]'
+                              : 'bg-white text-black hover:bg-gray-200'
+                            }`}
+                        >
+                          Submit Message
+                        </button>
+                      </form>
+                    </div>
                   </div>
+                  <Toaster position="bottom-right" autoClose={3000} hideProgressBar={false} />
                 </div>
-                <Toaster position="bottom-right" autoClose={3000} hideProgressBar={false} />
+
+                {/* Close Button */}
+                <div className="self-start sm:self-center">
+                  <button
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                    className={`p-2 rounded-full cursor-pointer ${darkMode
+                        ? "bg-white text-black hover:bg-gray-200"
+                        : "bg-[#27272a] text-white hover:bg-[#27272a]"
+                      }`}
+                  >
+                    <IoClose />
+                  </button>
+                </div>
               </div>
             </div>
+
           )}
 
 
@@ -529,8 +548,8 @@ function App() {
               <span className='text-4xl font-bold'>Shreyash Thaware</span>
               <span className='text-[#a1a1aa] text-xl'>Software Engineer</span>
               <div className='flex flex-wrap items-center gap-4'>
-                <Link to={'https://mail.google.com/mail/u/0/?fs=1&to=shreyashthaware284@gmail.com&tf=cm'} className='flex items-center gap-1 text-[#a1a1aa] hover:underline'><CiMail />shreyashthaware284@gmail.com</Link>
-                <span className='flex items-center gap-1 text-[#a1a1aa]'><CiLocationOn />Nagpur, India</span>
+                <Link to={'https://mail.google.com/mail/u/0/?fs=1&to=shreyashthaware284@gmail.com&tf=cm'} className='flex items-center gap-1 text-[#a1a1aa] hover:underline'><CiMail className='text-lg' />shreyashthaware284@gmail.com</Link>
+                <span className='flex items-center gap-1 text-[#a1a1aa]'><CiLocationOn className='text-lg' />Nagpur, India</span>
               </div>
               <p className='text-base leading-relaxed text-[#a1a1aa]'>
                 I’m a passionate Full Stack Web Developer (MERN) with a strong focus on building pixel-perfect, responsive, and dynamic web applications. I love crafting clean, scalable code and designing seamless user experiences that not only look great but also perform efficiently. Whether it’s developing robust backend systems or designing intuitive front-end interfaces, I enjoy bringing ideas to life through technology.
@@ -539,7 +558,10 @@ function App() {
                 <a
                   href="./src/assets/Shreyash_Thaware_MERN.pdf"
                   download="Shreyash_Thaware_Resume.pdf"
-                  className={`${darkMode ? 'bg-white text-black hover:bg-gray-200 duration-200' : 'bg-black text-white hover:bg-[#27272a] duration-200'} px-4 py-2 rounded-md flex items-center gap-4 cursor-pointer`}
+                  className={`${darkMode
+                    ? "bg-black text-white hover:bg-[#27272a] duration-200"
+                    : "bg-white text-black hover:bg-gray-200 duration-200"
+                    } px-4 py-2 rounded-md flex items-center gap-4 cursor-pointer`}
                 >
                   <FiDownload />
                   Resume
@@ -549,7 +571,10 @@ function App() {
                   <Link
                     key={index}
                     to={item.link}
-                    className={`${darkMode ? 'hover:bg-[#27272a] border-gray-800' : "hover:bg-gray-200 border-gray-300"} duration-200 border border-solid px-3 py-2 rounded-md cursor-pointer`}
+                    className={`${darkMode
+                      ? "hover:bg-gray-200 duration-200 border-gray-200"
+                      : "hover:bg-[#27272a] duration-200 border-gray-800"
+                      } duration-200 border border-solid px-3 py-2 rounded-md cursor-pointer`}
                   >
                     {item.icon}
                   </Link>
@@ -561,7 +586,7 @@ function App() {
             {/* Resume */}
             <div className='flex flex-col flex-nowrap gap-6 py-10'>
               <div className='flex justify-center items-center'>
-                <div className={`md:w-[270px] md:h-[446px] border ${darkMode ? 'border-gray-800' : 'border-gray-300'} rounded-md`}>
+                <div className={`md:w-[270px] md:h-[446px] border ${darkMode ? 'border-gray-200' : 'border-gray-800'} rounded-md`}>
                   <div className='bg-black rounded-t-md py-6 flex items-center gap-1 px-4 '>
                     <span className='rounded-full w-3 h-3 bg-red-500 '></span>
                     <span className='rounded-full w-3 h-3 bg-yellow-500'></span>
@@ -605,8 +630,8 @@ function App() {
             <div className='flex items-center justify-center'>
               <div className="grid md:grid-cols-3 gap-4">
                 {skillCategories.map((category, index) => (
-                  <div key={index} className={`card h-full border-2 hover:border-dotted border-gray-800 ${darkMode ? 'hover:border-white' : 'hover:border-black'} rounded-lg md:w-72`}>
-                    <div className={`h-full hover:border-2 border-black ${darkMode ? 'hover:bg-white text-white hover:text-black ' : 'hover:bg-black hover:text-white'} rounded-lg hover:-translate-x-1 hover:-translate-y-1 transition-all px-5 py-3`}>
+                  <div key={index} className={`card h-full border-2 hover:border-dotted border-gray-800 ${darkMode ? 'hover:border-black' : 'hover:border-white'} rounded-lg md:w-72`}>
+                    <div className={`h-full hover:border-2 border-black ${darkMode ? 'hover:bg-black text-black hover:text-white ' : 'hover:bg-white hover:text-black'} rounded-lg hover:-translate-x-1 hover:-translate-y-1 transition-all px-5 py-3`}>
 
                       {/* Title */}
                       <div className="my-3 md:my-5">
@@ -618,7 +643,7 @@ function App() {
                         {category.skills.map((skill, i) => (
                           <span key={i}>
                             <button className={`flex items-center gap-1 ${skill.bg} p-2 text-white rounded-md`}>
-                              <h1 className="text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer">{skill.icon}{skill.name}</h1>
+                              <h1 className={`text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer`}>{skill.icon}{skill.name}</h1>
                             </button>
                           </span>
                         ))}
@@ -634,8 +659,8 @@ function App() {
           <div id='projects' className='flex flex-col flex-nowrap gap-6 py-6'>
             <span className='text-3xl font-bold tracking-wide'>Projects</span>
             {project.map((item, index) => (
-              <div key={index} className={`border ${darkMode ? 'border-gray-800' : 'border-gray-300'} flex flex-col md:flex-row rounded-xl`}>
-                <div className={`md:w-4xl md:border-r ${darkMode ? 'border-gray-800' : 'border-gray-300'} p-4 flex items-center`}>
+              <div key={index} className={`border ${darkMode ? 'border-gray-200' : 'border-gray-800'} flex flex-col md:flex-row rounded-xl`}>
+                <div className={`md:w-4xl md:border-r ${darkMode ? 'border-gray-200' : 'border-gray-800'} p-4 flex items-center`}>
                   <img src={item.img} alt="" className='object-contain' />
                 </div>
                 <div className='flex flex-col p-4 gap-2'>
@@ -643,7 +668,7 @@ function App() {
                   <p className='text-[#a1a1aa]'>{item.description}</p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {item.skills.map((skills, i) => (
-                      <div key={i} className={`rounded-xl px-3 py-1 text-sm ${darkMode ? 'bg-[#27272a]' : 'bg-gray-200'}`}>
+                      <div key={i} className={`rounded-xl px-3 py-1 text-sm ${darkMode ? 'bg-gray-200' : 'bg-[#27272a]'}`}>
                         <span>{skills.name}</span>
                       </div>
                     ))}
@@ -656,14 +681,19 @@ function App() {
                     </ul>
                   ))}
                   <div className='flex items-center gap-4'>
-                    <Link to={item.live} className={`${darkMode ? 'bg-white text-black hover:bg-gray-200 duration-200' : 'bg-black text-white hover:bg-[#27272a] duration-200'} px-4 py-2 my-2 rounded-md w-fit flex items-center flex-nowrap justify-center gap-2 transition-all duration-300`}><FiExternalLink />Live</Link>
-                    <Link to={item.github} className={`${darkMode ? 'bg-white text-black hover:bg-gray-200 duration-200' : 'bg-black text-white hover:bg-[#27272a] duration-200'} px-4 py-2 my-2 rounded-md w-fit flex items-center flex-nowrap justify-center gap-2 transition-all duration-300`}><FiExternalLink />Github</Link>
+                    <Link to={item.live} className={`${darkMode ? 'bg-black text-white hover:bg-[#27272a] duration-200' : 'bg-white text-black hover:bg-gray-200 duration-200'} px-4 py-2 my-2 rounded-md w-fit flex items-center flex-nowrap justify-center gap-2 transition-all duration-300`} target='_blank'><FiExternalLink />Live</Link>
+                    <Link to={item.github} className={`${darkMode ? 'bg-black text-white hover:bg-[#27272a] duration-200' : 'bg-white text-black hover:bg-gray-200 duration-200'} px-4 py-2 my-2 rounded-md w-fit flex items-center flex-nowrap justify-center gap-2 transition-all duration-300`} target='_blank'><FiExternalLink />Github</Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
+        {/* footer */}
+        <footer className={`flex flex-nowrap items-center justify-center w-full py-8`}>
+          <span className='flex items-center gap-2'><FiMail className='text-xl' />shreyashthaware284@gmail.com</span>
+        </footer>
       </div>
     </>
   )
