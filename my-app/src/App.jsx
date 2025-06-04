@@ -266,7 +266,7 @@ function App() {
         <div className='max-w-4xl mx-auto py-10'>
 
           {/* Navbar */}
-          <nav className={`fixed top-0 left-0 w-full z-50 backdrop-blur-lg ${darkMode ? 'bg-white/70' : ' bg-black/60'}`}>
+          <nav className={`fixed top-0 left-0 w-full z-50 backdrop-blur-lg transition-all duration-300 ${darkMode ? 'bg-white/70' : ' bg-black/60'}`}>
             <div className="max-w-4xl mx-auto px-4 flex justify-between items-center py-4">
               {/* Logo / Brand */}
               <div className="font-bold text-xl select-none">Shreyash Thaware</div>
