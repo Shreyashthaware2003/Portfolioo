@@ -51,7 +51,7 @@ function App() {
   }, [isOpen]);
 
   const handleImageClick = () => {
-    setSelectedImage('./src/assets/Resume.png'); // Set the image source for the modal
+    setSelectedImage(Resume); // Set the image source for the modal
     setIsOpen(true); // Open the modal
   };
 
