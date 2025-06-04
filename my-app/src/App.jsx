@@ -266,11 +266,10 @@ function App() {
         <div className='max-w-4xl mx-auto py-10'>
 
           {/* Navbar */}
-          <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg">
+          <nav className={`fixed top-0 left-0 w-full z-50 backdrop-blur-lg ${darkMode ? 'bg-white/70' : ' bg-black/60'}`}>
             <div className="max-w-4xl mx-auto px-4 flex justify-between items-center py-4">
               {/* Logo / Brand */}
-              <div className="font-bold text-xl cursor-pointer select-none">Portfolio</div>
-
+              <div className="font-bold text-xl select-none">Shreyash Thaware</div>
               {/* Desktop nav */}
               <ul className="hidden md:flex items-center gap-6">
                 {nav.map((item, index) => (
@@ -324,14 +323,14 @@ function App() {
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label="Toggle Dark Mode"
                 >
-                  {darkMode ? <IoMoonOutline size={24} /> : <IoSunnyOutline size={24} />}
+                  {darkMode ? <IoMoonOutline size={18} /> : <IoSunnyOutline size={18} />}
                 </div>
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                   className={`focus:outline-none`}
                   aria-label="Toggle Menu"
                 >
-                  <IoMdMenu className='text-2xl' />
+                  <IoMdMenu size={18} />
                 </button>
               </div>
             </div>
@@ -374,7 +373,7 @@ function App() {
                     setShowModal(true);
                     setMenuOpen(false);
                   }}
-                  className={`w-full ${darkMode
+                  className={`${darkMode
                     ? "bg-black text-white hover:bg-[#27272a] duration-200"
                     : "bg-white text-black hover:bg-gray-200 duration-200"
                     } px-3 py-2 rounded-md cursor-pointer`}
@@ -391,18 +390,18 @@ function App() {
             <div
               className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-md p-4"
             >
-              <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-4 w-full max-w-5xl">
+              <div className="flex relative flex-col sm:flex-row sm:flex-nowrap gap-4 w-full md:max-w-3xl p-6">
                 {/* Main Modal Box */}
                 <div
-                  className={`w-full sm:w-[90%] rounded-xl border shadow-lg p-4 sm:p-6 relative overflow-y-auto max-h-[90vh] ${darkMode
-                      ? "bg-white text-black border-gray-200"
-                      : "bg-[#27272a] text-white border-gray-800"
+                  className={`w-full sm:w-[90%]  rounded-xl border shadow-lg p-4 sm:p-6 relative overflow-y-auto max-h-[90vh] ${darkMode
+                    ? "bg-white text-black border-gray-200"
+                    : "bg-[#27272a] text-white border-gray-800"
                     }`}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                     {/* Left Column - Contact Info */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 hidden md:inline">
                       <h3 className={`text-xl font-semibold ${darkMode ? 'text-black' : 'text-white'}`}>Get In Touch</h3>
                       <div className="space-y-4">
                         {/* Email */}
@@ -510,11 +509,11 @@ function App() {
                         <button
                           type="submit"
                           className={`w-full h-10 px-4 py-2 rounded-md font-medium text-sm transition-colors focus:outline-none focus:ring-2 cursor-pointer ${darkMode
-                              ? 'bg-black text-white hover:bg-[#27272a]'
-                              : 'bg-white text-black hover:bg-gray-200'
+                            ? 'bg-black text-white hover:bg-[#27272a]'
+                            : 'bg-white text-black hover:bg-gray-200'
                             }`}
                         >
-                          Submit Message
+                          Submit
                         </button>
                       </form>
                     </div>
@@ -523,13 +522,13 @@ function App() {
                 </div>
 
                 {/* Close Button */}
-                <div className="self-start sm:self-center">
+                <div className="absolute -right-3 md:right-14">
                   <button
                     type="button"
                     onClick={() => setShowModal(false)}
                     className={`p-2 rounded-full cursor-pointer ${darkMode
-                        ? "bg-white text-black hover:bg-gray-200"
-                        : "bg-[#27272a] text-white hover:bg-[#27272a]"
+                      ? "bg-white text-black hover:bg-gray-200"
+                      : "bg-[#27272a] text-white hover:bg-[#27272a]"
                       }`}
                   >
                     <IoClose />
@@ -543,15 +542,17 @@ function App() {
 
 
           {/* About Section */}
-          <div id='about' className='flex flex-col md:flex-row justify-between items-center pt-14 py-10 gap-12'>
+          <div id='about' className='flex flex-col md:flex-row justify-between items-center pt-14 py-10 gap-6 md:gap-12'>
             <div className='flex flex-col gap-4 max-w-lg'>
-              <span className='text-4xl font-bold'>Shreyash Thaware</span>
-              <span className='text-[#a1a1aa] text-xl'>Software Engineer</span>
-              <div className='flex flex-wrap items-center gap-4'>
-                <Link to={'https://mail.google.com/mail/u/0/?fs=1&to=shreyashthaware284@gmail.com&tf=cm'} className='flex items-center gap-1 text-[#a1a1aa] hover:underline'><CiMail className='text-lg' />shreyashthaware284@gmail.com</Link>
-                <span className='flex items-center gap-1 text-[#a1a1aa]'><CiLocationOn className='text-lg' />Nagpur, India</span>
+              <div className='flex flex-col flex-nowrap gap-1'>
+                <span className='text-3xl md:text-4xl font-bold'>Shreyash Thaware</span>
+                <span className='text-[#a1a1aa] text-lg md:text-xl'>Software Engineer</span>
               </div>
-              <p className='text-base leading-relaxed text-[#a1a1aa]'>
+              <div className='flex flex-wrap items-center gap-4'>
+                <Link to={'https://mail.google.com/mail/u/0/?fs=1&to=shreyashthaware284@gmail.com&tf=cm'} className='flex items-center gap-1 text-[#a1a1aa] hover:underline text-sm md:text-base'><CiMail className='text-lg' />shreyashthaware284@gmail.com</Link>
+                <span className='flex items-center gap-1 text-[#a1a1aa] text-sm md:text-base'><CiLocationOn className='text-lg' />Nagpur, India</span>
+              </div>
+              <p className='text-sm md:text-base leading-relaxed text-[#a1a1aa]'>
                 I’m a passionate Full Stack Web Developer (MERN) with a strong focus on building pixel-perfect, responsive, and dynamic web applications. I love crafting clean, scalable code and designing seamless user experiences that not only look great but also perform efficiently. Whether it’s developing robust backend systems or designing intuitive front-end interfaces, I enjoy bringing ideas to life through technology.
               </p>
               <div className='flex flex-nowrap items-center my-4 gap-3'>
@@ -561,7 +562,7 @@ function App() {
                   className={`${darkMode
                     ? "bg-black text-white hover:bg-[#27272a] duration-200"
                     : "bg-white text-black hover:bg-gray-200 duration-200"
-                    } px-4 py-2 rounded-md flex items-center gap-4 cursor-pointer`}
+                    } px-4 py-2 text-sm md:text-base rounded-md flex items-center gap-2 md:gap-4 cursor-pointer`}
                 >
                   <FiDownload />
                   Resume
@@ -584,13 +585,15 @@ function App() {
             </div>
 
             {/* Resume */}
-            <div className='flex flex-col flex-nowrap gap-6 py-10'>
+            <div className='flex flex-col flex-nowrap gap-6 pt-10 pb-0 md:pb-10'>
               <div className='flex justify-center items-center'>
                 <div className={`md:w-[270px] md:h-[446px] border ${darkMode ? 'border-gray-200' : 'border-gray-800'} rounded-md`}>
-                  <div className='bg-black rounded-t-md py-6 flex items-center gap-1 px-4 '>
-                    <span className='rounded-full w-3 h-3 bg-red-500 '></span>
-                    <span className='rounded-full w-3 h-3 bg-yellow-500'></span>
-                    <span className='rounded-full w-3 h-3 bg-green-500'></span>
+                  <div className='bg-black rounded-t-md py-6 flex justify-between items-center gap-1 px-4 '>
+                    <div className='flex items-center gap-1'>
+                      <span className='rounded-full w-3 h-3 bg-red-500 '></span>
+                      <span className='rounded-full w-3 h-3 bg-yellow-500'></span>
+                      <span className='rounded-full w-3 h-3 bg-green-500'></span>
+                    </div>
                     <div className='text-white text-xs font-semibold tracking-wider flex w-[200px]  justify-end'>
                       <span className='flex items-center justify-center gap-2'>Click to preview <GiClick className='transform rotate-[35deg] text-base' /></span>
                     </div>
@@ -602,7 +605,6 @@ function App() {
                       className='rounded-b-md object-cover cursor-pointer w-full'
                       onClick={handleImageClick}
                     />
-
                   </div>
 
                 </div>
@@ -612,10 +614,13 @@ function App() {
             {isOpen && (
               <a className="fixed inset-0 z-50 backdrop-blur-md flex justify-center items-center transition-all duration-300">
                 <div className="relative" >
-                  <img src={selectedImage} alt="Resume" className="w-[360px] md:w-[460px]" />
+                  <img src={selectedImage} alt="Resume" className="w-[310px] md:w-[460px]" />
                   <button
                     onClick={closeModal}
-                    className="absolute top-1 -right-10 bg-white rounded-full p-2 text-black text-xl cursor-pointer"
+                    className={`absolute top-1 -right-8 rounded-full p-1 text-xl cursor-pointer ${darkMode
+                      ? "bg-white text-black hover:bg-gray-200"
+                      : "bg-[#27272a] text-white hover:bg-[#27272a]"
+                      }`}
                   >
                     <IoClose />
                   </button>
