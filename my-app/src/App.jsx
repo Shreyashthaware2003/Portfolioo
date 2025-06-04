@@ -12,6 +12,7 @@ import { SiExpress, SiMongodb, SiPostman } from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb";
 import { Link, NavLink } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
+import blog from './assets/blog.jpg'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -115,7 +116,7 @@ function App() {
 
   const project = [
     {
-      img: './src/assets/store.jpg',
+      img: blog,
       title: 'Forever Buy',
       description: 'A full-stack fashion store built with the MERN stack. Users can browse, filter, and shop clothing by category and size. Includes cart, reviews, and responsive design. Admins can manage products, users, and orders.',
       live: "https://forever-buy-one.vercel.app/",
