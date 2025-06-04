@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link as ScrollLink } from 'react-scroll';
 import { IoSunnyOutline, IoMoonOutline, IoClose } from "react-icons/io5";
 import { IoMdMenu } from "react-icons/io";
@@ -19,11 +19,35 @@ import Resume from './assets/Resume.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+  const cardRefs = useRef([]);
+  const isMobile = window.innerWidth < 768;
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleClickOutside = (event) => {
+      if (
+        activeCard !== null &&
+        cardRefs.current[activeCard] &&
+        !cardRefs.current[activeCard].contains(event.target)
+      ) {
+        setActiveCard(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeCard, isMobile]);
+
 
   // Close menu when clicking a nav link (for mobile)
   const handleLinkClick = () => setMenuOpen(false);
@@ -634,14 +658,35 @@ function App() {
           </div>
 
           {/* Skills */}
-          <div id='skills' className='flex flex-col flex-nowrap my-10 gap-6'>
+          <div id='skills' className='flex flex-col flex-nowrap my-10 gap-8'>
             <span className='text-3xl font-bold tracking-wide'>Skills</span>
             <div className='flex items-center justify-center'>
               <div className="grid md:grid-cols-3 gap-4">
                 {skillCategories.map((category, index) => (
-                  <div key={index} className={`card h-full border-2 hover:border-dotted border-gray-800 ${darkMode ? 'hover:border-black' : 'hover:border-white'} rounded-lg md:w-72`}>
-                    <div className={`h-full hover:border-2 border-black ${darkMode ? 'hover:bg-black text-black hover:text-white ' : 'hover:bg-white hover:text-black'} rounded-lg hover:-translate-x-1 hover:-translate-y-1 transition-all px-5 py-3`}>
-
+                  <div
+                    key={index}
+                    ref={(el) => (cardRefs.current[index] = el)}
+                    className={`card h-full border-2 rounded-lg md:w-72
+    ${darkMode ? 'md:hover:border-black' : 'md:hover:border-white'}
+    md:hover:border-dotted
+    ${isMobile && activeCard === index ? ' border-dotted' : 'border-solid border-gray-800'}`}
+                    onClick={() => {
+                      if (isMobile) setActiveCard(index);
+                    }}
+                  >
+                    <div
+                      className={`h-full rounded-lg px-5 py-3 transition-all
+      ${activeCard === index && isMobile
+                          ? `
+          border-2 border-black -translate-x-1 -translate-y-1
+          ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`
+                          : ''}
+      md:hover:border-2 md:hover:-translate-x-1 md:hover:-translate-y-1
+      ${darkMode
+                          ? 'md:hover:bg-black md:hover:text-white'
+                          : 'md:hover:bg-white md:hover:text-black'}
+    `}
+                    >
                       {/* Title */}
                       <div className="my-3 md:my-5">
                         <h1 className="text-md font-semibold">{category.title}</h1>
