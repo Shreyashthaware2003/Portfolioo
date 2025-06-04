@@ -12,7 +12,10 @@ import { SiExpress, SiMongodb, SiPostman } from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb";
 import { Link, NavLink } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
-import blog from './assets/blog.jpg'
+import blog from './assets/blog.jpg';
+import store from './assets/store.jpg';
+import cms from './assets/cms.jpg';
+import Resume from './assets/Resume.png';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -116,7 +119,7 @@ function App() {
 
   const project = [
     {
-      img: blog,
+      img: store,
       title: 'Forever Buy',
       description: 'A full-stack fashion store built with the MERN stack. Users can browse, filter, and shop clothing by category and size. Includes cart, reviews, and responsive design. Admins can manage products, users, and orders.',
       live: "https://forever-buy-one.vercel.app/",
@@ -147,7 +150,7 @@ function App() {
       ]
     },
     {
-      img: './src/assets/blog.jpg',
+      img: blog,
       title: 'Blogger',
       description: 'A full-stack fashion store built with the MERN stack. Users can browse, filter, and shop clothing by category and size. Includes cart, reviews, and responsive design. Admins can manage products, users, and orders.',
       live: "https://blogger-sigma-nine.vercel.app/",
@@ -187,7 +190,7 @@ function App() {
       ]
     },
     {
-      img: './src/assets/cms.jpg',
+      img: cms,
       title: 'MasterMind Academix',
       description: 'A responsive full-stack course-selling platform built with the MERN stack. Users can browse, purchase, and learn through structured courses. Admins can manage courses, lectures, and users via a secure dashboard.',
       live: "https://master-mind-academix.vercel.app/",
@@ -601,7 +604,7 @@ function App() {
                   </div>
                   <div className='relative'>
                     <img
-                      src="./src/assets/Resume.png"
+                      src={Resume}
                       alt="Resume"
                       className='rounded-b-md object-cover cursor-pointer w-full'
                       onClick={handleImageClick}
