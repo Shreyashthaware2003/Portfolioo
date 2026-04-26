@@ -184,7 +184,10 @@ function App() {
       github: "https://github.com/Shreyashthaware2003/feature-flag",
       skills: [
         {
-          name: "Node.js",
+          name: "Next.js",
+        },
+        {
+          name: "TypeScript",
         },
         {
           name: "Nest.js",
